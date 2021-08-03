@@ -29,7 +29,6 @@ let
   inherit (pkgs) lib haskell-nix;
   inherit (plutus) haskell agdaPackages;
   inherit (plutus) easyPS sphinxcontrib-haddock;
-  noCross = x: if crossSystem == null then x else { };
 in
 rec {
   inherit pkgs plutus;
@@ -47,31 +46,31 @@ rec {
   webCommonMarlowe = pkgs.callPackage ./web-common-marlowe { inherit (plutus.lib) gitignore-nix; };
   webCommonPlayground = pkgs.callPackage ./web-common-playground { inherit (plutus.lib) gitignore-nix; };
 
-  plutus-playground = noCross (pkgs.recurseIntoAttrs rec {
+  plutus-playground = pkgs.recurseIntoAttrs rec {
     haddock = plutus.plutus-haddock-combined;
 
     inherit (pkgs.callPackage ./plutus-playground-client {
       inherit (plutus.lib) buildPursPackage buildNodeModules filterNpm gitignore-nix;
       inherit haskell webCommon webCommonPlutus webCommonPlayground;
     }) client server generate-purescript start-backend;
-  });
+  };
 
-  marlowe-playground = noCross (pkgs.recurseIntoAttrs rec {
+  marlowe-playground = pkgs.recurseIntoAttrs rec {
     inherit (pkgs.callPackage ./marlowe-playground-client {
       inherit (plutus.lib) buildPursPackage buildNodeModules filterNpm gitignore-nix;
       inherit haskell webCommon webCommonMarlowe webCommonPlayground;
     }) client server generate-purescript start-backend;
-  });
+  };
 
-  marlowe-dashboard = noCross (pkgs.recurseIntoAttrs rec {
+  marlowe-dashboard = pkgs.recurseIntoAttrs rec {
     inherit (pkgs.callPackage ./marlowe-dashboard-client {
       inherit haskell plutus-pab;
       inherit (plutus.lib) buildPursPackage buildNodeModules filterNpm gitignore-nix;
       inherit webCommon webCommonMarlowe;
     }) client server-setup-invoker marlowe-invoker generated-purescript generate-purescript;
-  });
+  };
 
-  marlowe-dashboard-fake-pab = noCross (pkgs.recurseIntoAttrs rec {
+  marlowe-dashboard-fake-pab =  (pkgs.recurseIntoAttrs rec {
     inherit (pkgs.callPackage ./fake-pab {
       inherit marlowe-dashboard;
       inherit (plutus.lib) buildPursPackage buildNodeModules filterNpm gitignore-nix;
@@ -88,10 +87,10 @@ rec {
 
   marlowe-web = pkgs.callPackage ./marlowe-website { inherit (plutus.lib) npmlock2nix gitignore-nix; };
 
-  plutus-pab = noCross (pkgs.recurseIntoAttrs (pkgs.callPackage ./plutus-pab-client {
+  plutus-pab = pkgs.recurseIntoAttrs (pkgs.callPackage ./plutus-pab-client {
     inherit (plutus.lib) buildPursPackage buildNodeModules gitignore-nix filterNpm;
     inherit haskell webCommon webCommonPlutus;
-  }));
+  });
 
   plutus-use-cases = pkgs.recurseIntoAttrs (pkgs.callPackage ./plutus-use-cases {
     inherit haskell;
@@ -106,15 +105,15 @@ rec {
     src = ./.;
   };
 
-  docs = noCross (import ./nix/docs.nix { inherit pkgs plutus; });
+  docs = import ./nix/docs.nix { inherit pkgs plutus; };
 
-  deployment = noCross (pkgs.recurseIntoAttrs (pkgs.callPackage ./deployment/morph {
+  deployment = pkgs.recurseIntoAttrs (pkgs.callPackage ./deployment/morph {
     plutus = {
       inherit plutus-pab marlowe-dashboard marlowe-playground plutus-playground web-ghc docs marlowe-web;
     };
-  }));
+  });
 
   # This builds a vscode devcontainer that can be used with the plutus-starter project (or probably the plutus project itself).
-  devcontainer = noCross (import ./nix/devcontainer/plutus-devcontainer.nix { inherit pkgs plutus; });
-  build-and-push-devcontainer-script = noCross (import ./nix/devcontainer/deploy/default.nix { inherit pkgs plutus; });
+  devcontainer = import ./nix/devcontainer/plutus-devcontainer.nix { inherit pkgs plutus; };
+  build-and-push-devcontainer-script = import ./nix/devcontainer/deploy/default.nix { inherit pkgs plutus; };
 }
