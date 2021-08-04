@@ -210,6 +210,9 @@ let
           # Windows build of libpq is marked as broken
           fake-pab.components.library.platforms = with lib.platforms; [ linux darwin ];
           fake-pab.components.exes.fake-pab-server.platforms = with lib.platforms; [ linux darwin ];
+          plutus-playground-server.components.exes.plutus-playground-server.platforms = with lib.platforms; [ linux darwin ];
+          marlowe.components.exes.marlowe-pab.platforms = with lib.platforms; [ linux darwin ];
+          marlowe-playground-server.components.exes.marlowe-playground-server.platforms = with lib.platforms; [ linux darwin ];
 
           # Broken due to warnings, unclear why the setting that fixes this for the build doesn't work here.
           iohk-monitoring.doHaddock = false;
@@ -263,9 +266,6 @@ let
             config.hsPkgs.plutus-core.components.exes.uplc
             agdaWithStdlib
           ];
-
-          # Components that will not cross compile
-          plutus-playground-server.components.exes.plutus-playground-server.platforms = with lib.platforms; [ linux darwin ];
         };
       })
     ] ++ lib.optional enableHaskellProfiling {

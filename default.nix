@@ -70,13 +70,13 @@ rec {
     }) client server-setup-invoker marlowe-invoker generated-purescript generate-purescript;
   };
 
-  marlowe-dashboard-fake-pab =  (pkgs.recurseIntoAttrs rec {
+  marlowe-dashboard-fake-pab = pkgs.recurseIntoAttrs rec {
     inherit (pkgs.callPackage ./fake-pab {
       inherit marlowe-dashboard;
       inherit (plutus.lib) buildPursPackage buildNodeModules filterNpm gitignore-nix;
       inherit haskell webCommon webCommonMarlowe;
     }) client fake-pab-exe fake-pab-generated-purescript;
-  });
+  };
 
   marlowe-marketplace = pkgs.recurseIntoAttrs rec {
     inherit (pkgs.callPackage ./marlowe-marketplace-client {
@@ -105,6 +105,8 @@ rec {
     src = ./.;
   };
 
+  # docs = {};
+  # deployment = {};
   docs = import ./nix/docs.nix { inherit pkgs plutus; };
 
   deployment = pkgs.recurseIntoAttrs (pkgs.callPackage ./deployment/morph {
@@ -114,6 +116,6 @@ rec {
   });
 
   # This builds a vscode devcontainer that can be used with the plutus-starter project (or probably the plutus project itself).
-  devcontainer = import ./nix/devcontainer/plutus-devcontainer.nix { inherit pkgs plutus; };
-  build-and-push-devcontainer-script = import ./nix/devcontainer/deploy/default.nix { inherit pkgs plutus; };
+#  devcontainer = import ./nix/devcontainer/plutus-devcontainer.nix { inherit pkgs plutus; };
+#  build-and-push-devcontainer-script = import ./nix/devcontainer/deploy/default.nix { inherit pkgs plutus; };
 }
