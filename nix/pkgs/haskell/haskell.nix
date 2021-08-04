@@ -263,6 +263,9 @@ let
             config.hsPkgs.plutus-core.components.exes.uplc
             agdaWithStdlib
           ];
+
+          # Components that will not cross compile
+          plutus-playground-server.components.exes.plutus-playground-server.platforms = with lib.platforms; [ linux darwin ];
         };
       })
     ] ++ lib.optional enableHaskellProfiling {
