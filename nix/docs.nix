@@ -72,8 +72,8 @@ pkgs.recurseIntoAttrs {
     pythonPackages = pkgs.python3Packages;
   });
 
-  build-and-serve-docs = pkgs.writeShellScriptBin "build-and-serve-docs" ''
+  build-and-serve-docs = nativeOnly (pkgs.writeShellScriptBin "build-and-serve-docs" ''
     cd $(nix-build default.nix -A docs.site) && \
     ${pkgs.python3}/bin/python3 -m http.server 8002
-  '';
+  '');
 }
