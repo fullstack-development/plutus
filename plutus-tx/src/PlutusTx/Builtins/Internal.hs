@@ -148,9 +148,9 @@ newtype BuiltinByteString = BuiltinByteString ByteString
 instance Pretty BuiltinByteString where
     pretty = viaShow
 
-{-# NOINLINE concatenate #-}
-concatenate :: BuiltinByteString -> BuiltinByteString -> BuiltinByteString
-concatenate (BuiltinByteString b1) (BuiltinByteString b2) = BuiltinByteString $ BS.append b1 b2
+{-# NOINLINE appendByteString #-}
+appendByteString :: BuiltinByteString -> BuiltinByteString -> BuiltinByteString
+appendByteString (BuiltinByteString b1) (BuiltinByteString b2) = BuiltinByteString $ BS.append b1 b2
 
 {-# NOINLINE takeByteString #-}
 takeByteString :: BuiltinInteger -> BuiltinByteString -> BuiltinByteString

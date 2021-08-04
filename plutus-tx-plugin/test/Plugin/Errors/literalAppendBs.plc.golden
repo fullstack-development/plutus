@@ -1,0 +1,4 @@
+(program 1.0.0
+  (lam x_i0 [ [ (builtin appendByteString) (con bytestring #68656c6c6f) ] x_i1 ]
+  )
+)

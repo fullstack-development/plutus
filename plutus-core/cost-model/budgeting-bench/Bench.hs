@@ -339,7 +339,7 @@ main = do
                                                        , LessThanInteger
                                                        , LessThanEqualsInteger
                                                        ])
-                      <> (benchTwoByteStrings <$> [Concatenate])
+                      <> (benchTwoByteStrings <$> [AppendByteString])
                       <> (benchBytestringOperations <$> [DropByteString, TakeByteString])
                       <> (benchHashOperations <$> [Sha2_256, Sha3_256])
                       <> (benchSameTwoByteStrings <$> [ EqualsByteString

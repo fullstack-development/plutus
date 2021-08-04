@@ -63,7 +63,7 @@ module PlutusTx.Prelude (
     zipWith,
     -- * ByteStrings
     BuiltinByteString,
-    concatenate,
+    appendByteString,
     takeByteString,
     dropByteString,
     emptyByteString,
@@ -89,8 +89,8 @@ import           Data.String          (IsString (..))
 import           PlutusCore.Data      (Data (..))
 import           PlutusTx.Applicative as Applicative
 import           PlutusTx.Bool        as Bool
-import           PlutusTx.Builtins    (BuiltinByteString, BuiltinData, BuiltinString, appendString, charToString,
-                                       concatenate, decodeUtf8, dropByteString, emptyByteString, emptyString,
+import           PlutusTx.Builtins    (BuiltinByteString, BuiltinData, BuiltinString, appendByteString, appendString,
+                                       charToString, decodeUtf8, dropByteString, emptyByteString, emptyString,
                                        encodeUtf8, equalsByteString, equalsString, error, fromBuiltin,
                                        greaterThanByteString, lessThanByteString, sha2_256, sha3_256, takeByteString,
                                        toBuiltin, trace, verifySignature)

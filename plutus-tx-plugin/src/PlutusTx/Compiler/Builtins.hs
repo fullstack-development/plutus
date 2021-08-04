@@ -157,7 +157,7 @@ mkBuiltin = PIR.Builtin ()
 builtinNames :: [TH.Name]
 builtinNames = [
       ''Builtins.BuiltinByteString
-    , 'Builtins.concatenate
+    , 'Builtins.appendByteString
     , 'Builtins.takeByteString
     , 'Builtins.dropByteString
     , 'Builtins.sha2_256
@@ -277,7 +277,7 @@ defineBuiltinTerms = do
     defineBuiltinTerm 'Builtins.chooseUnit $ mkBuiltin PLC.ChooseUnit
 
     -- Bytestring builtins
-    defineBuiltinTerm 'Builtins.concatenate $ mkBuiltin PLC.Concatenate
+    defineBuiltinTerm 'Builtins.appendByteString $ mkBuiltin PLC.AppendByteString
     defineBuiltinTerm 'Builtins.takeByteString $ mkBuiltin PLC.TakeByteString
     defineBuiltinTerm 'Builtins.dropByteString $ mkBuiltin PLC.DropByteString
     defineBuiltinTerm 'Builtins.sha2_256 $ mkBuiltin PLC.Sha2_256

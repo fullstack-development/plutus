@@ -5,7 +5,7 @@
 module PlutusTx.Builtins (
                                 -- * Bytestring builtins
                                 BuiltinByteString
-                                , concatenate
+                                , appendByteString
                                 , takeByteString
                                 , dropByteString
                                 , emptyByteString
@@ -74,10 +74,10 @@ import qualified PlutusTx.Builtins.Internal as BI
 
 import           Prelude                    hiding (String, error)
 
-{-# INLINABLE concatenate #-}
+{-# INLINABLE appendByteString #-}
 -- | Concatenates two 'ByteString's.
-concatenate :: BuiltinByteString -> BuiltinByteString -> BuiltinByteString
-concatenate = BI.concatenate
+appendByteString :: BuiltinByteString -> BuiltinByteString -> BuiltinByteString
+appendByteString = BI.appendByteString
 
 {-# INLINABLE takeByteString #-}
 -- | Returns the n length prefix of a 'ByteString'.
