@@ -181,12 +181,14 @@ let
         inherit (sphinxcontrib-haddock) sphinxcontrib-haddock;
       };
     in
-    pkgs.lib.addMetaAttrs {
-      platforms = with pkgs.lib.platforms; [ linux darwin ];
-    } (pkgs.callPackage ./plutus-haddock-combined {
-      inherit haskell haddock-combine;
-      inherit (pkgs) haskell-nix;
-    });
+    pkgs.lib.addMetaAttrs
+      {
+        platforms = with pkgs.lib.platforms; [ linux darwin ];
+      }
+      (pkgs.callPackage ./plutus-haddock-combined {
+        inherit haskell haddock-combine;
+        inherit (pkgs) haskell-nix;
+      });
 
   # Collect everything to be exported under `plutus.lib`: builders/functions/utils
   lib = rec {
