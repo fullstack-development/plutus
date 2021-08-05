@@ -234,7 +234,7 @@ let
           plutus-playground-server.ghcOptions = [ "-Werror" ];
           plutus-pab.ghcOptions = [ "-Werror" ];
           plutus-tx.ghcOptions = [ "-Werror" ];
-          plutus-tx-plugin.ghcOptions = lib.optional (!pkgs.stdenv.hostPlatform.isWindows) "-Werror";
+          plutus-tx-plugin.ghcOptions = [ "-Werror" ];
           plutus-doc.ghcOptions = [ "-Werror" ];
           plutus-use-cases.ghcOptions = [ "-Werror" ];
 
