@@ -106,7 +106,6 @@ instance Semigroup (ScriptLookups a) where
             -- 'First' to match the semigroup instance of Map (left-biased)
             , slTypedValidator = fmap getFirst $ (First <$> slTypedValidator l) <> (First <$> slTypedValidator r)
             , slOwnPubkey = fmap getFirst $ (First <$> slOwnPubkey l) <> (First <$> slOwnPubkey r)
-
             }
 
 instance Monoid (ScriptLookups a) where
@@ -477,7 +476,7 @@ processConstraint = \case
         let theHash = datumHash dv in
         unbalancedTx . tx . Tx.datumWitnesses . at theHash .= Just dv
     MustValidateIn timeRange ->
-        unbalancedTx . tx . Tx.validRange %= (TimeSlot.posixTimeRangeToSlotRange def timeRange /\)
+        unbalancedTx . tx . Tx.validRange %= (TimeSlot.posixTimeRangeToContainedSlotRange def timeRange /\)
     MustBeSignedBy pk ->
         unbalancedTx . requiredSignatories %= Set.insert pk
     MustSpendAtLeast vl -> valueSpentInputs <>= required vl

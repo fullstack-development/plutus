@@ -24,6 +24,7 @@ module Plutus.PAB.Core.ContractInstance(
     , updateState
     -- * STM instances
     , startSTMInstanceThread
+    , startContractInstanceThread'
     , AppBackendConstraints
     -- * Calling endpoints
     , callEndpointOnInstance
@@ -94,10 +95,29 @@ activateContractSTM' ::
     -> (Eff appBackend ~> IO)
     -> ContractActivationArgs (ContractDef t)
     -> Eff effs ContractInstanceId
-activateContractSTM' ContractInstanceState{contractState,stmState} activeContractInstanceId runAppBackend a@ContractActivationArgs{caID, caWallet} = do
-  logDebug @(ContractInstanceMsg t) $ InitialisingContract caID activeContractInstanceId
+activateContractSTM' c@ContractInstanceState{contractState} activeContractInstanceId runAppBackend a@ContractActivationArgs{caID} = do
+  logInfo @(ContractInstanceMsg t) $ InitialisingContract caID activeContractInstanceId
   Contract.putStartInstance @t a activeContractInstanceId
   Contract.putState @t a activeContractInstanceId contractState
+  startContractInstanceThread' c activeContractInstanceId runAppBackend a
+
+-- | Spin up the STM Instance thread for the provided contract and add it to
+-- the STM instance state.
+startContractInstanceThread' ::
+    forall t m appBackend effs.
+    ( Member (LogMsg (ContractInstanceMsg t)) effs
+    , Member (Reader InstancesState) effs
+    , Contract.PABContract t
+    , AppBackendConstraints t m appBackend
+    , LastMember m (Reader ContractInstanceId ': appBackend)
+    , LastMember m effs
+    )
+    => ContractInstanceState t
+    -> ContractInstanceId
+    -> (Eff appBackend ~> IO)
+    -> ContractActivationArgs (ContractDef t)
+    -> Eff effs ContractInstanceId
+startContractInstanceThread' ContractInstanceState{stmState} activeContractInstanceId runAppBackend a@ContractActivationArgs{caID, caWallet} = do
   s <- startSTMInstanceThread' @t @m stmState runAppBackend a activeContractInstanceId
   ask >>= void . liftIO . STM.atomically . InstanceState.insertInstance activeContractInstanceId s
   logInfo @(ContractInstanceMsg t) $ ActivatedContractInstance caID caWallet activeContractInstanceId
@@ -169,6 +189,15 @@ processEndpointRequestsSTM =
     maybeToHandler (traverse (extract Contract.Effects._ExposeEndpointReq))
     >>> (RequestHandler $ \q@Request{rqID, itID, rqRequest} -> fmap (Response rqID itID) (fmap (ExposeEndpointResp (aeDescription rqRequest)) . InstanceState.awaitEndpointResponse q <$> ask))
 
+processAwaitTimeRequestsSTM ::
+    forall effs.
+    ( Member (Reader BlockchainEnv) effs
+    )
+    => RequestHandler effs PABReq (STM PABResp)
+processAwaitTimeRequestsSTM =
+    maybeToHandler (extract Contract.Effects._AwaitTimeReq)
+    >>> (RequestHandler $ \time -> fmap AwaitTimeResp . InstanceState.awaitTime time <$> ask)
+
 -- | 'RequestHandler' that uses TVars to wait for events
 stmRequestHandler ::
     forall effs.
@@ -193,12 +222,14 @@ stmRequestHandler = fmap sequence (wrapHandler (fmap pure nonBlockingRequests) <
         <> RequestHandler.handleOwnInstanceIdQueries @effs
         <> RequestHandler.handleAddressChangedAtQueries @effs
         <> RequestHandler.handleCurrentSlotQueries @effs
+        <> RequestHandler.handleCurrentTimeQueries @effs
 
     -- requests that wait for changes to happen
     blockingRequests =
         wrapHandler (processAwaitSlotRequestsSTM @effs)
         <> wrapHandler (processTxStatusChangeRequestsSTM @effs)
         <> processEndpointRequestsSTM @effs
+        <> wrapHandler (processAwaitTimeRequestsSTM @effs)
 
 -- | Start the thread for the contract instance
 startSTMInstanceThread' ::
@@ -295,7 +326,7 @@ updateState ::
     , MonadIO m
     , Member (Reader InstanceState) effs
     )
-    => ContractResponse Value Value Value PABReq
+    => ContractResponse Value Value PABResp PABReq
     -> Eff effs ()
 updateState ContractResponse{newState = State{observableState}, hooks} = do
     state <- ask
