@@ -160,6 +160,7 @@ builtinNames = [
     , 'Builtins.appendByteString
     , 'Builtins.takeByteString
     , 'Builtins.dropByteString
+    , 'Builtins.lengthOfByteString
     , 'Builtins.sha2_256
     , 'Builtins.sha3_256
     , 'Builtins.blake2b_256
@@ -280,6 +281,7 @@ defineBuiltinTerms = do
     defineBuiltinTerm 'Builtins.appendByteString $ mkBuiltin PLC.AppendByteString
     defineBuiltinTerm 'Builtins.takeByteString $ mkBuiltin PLC.TakeByteString
     defineBuiltinTerm 'Builtins.dropByteString $ mkBuiltin PLC.DropByteString
+    defineBuiltinTerm 'Builtins.lengthOfByteString $ mkBuiltin PLC.LengthOfByteString
     defineBuiltinTerm 'Builtins.sha2_256 $ mkBuiltin PLC.Sha2_256
     defineBuiltinTerm 'Builtins.sha3_256 $ mkBuiltin PLC.Sha3_256
     defineBuiltinTerm 'Builtins.equalsByteString $ mkBuiltin PLC.EqualsByteString

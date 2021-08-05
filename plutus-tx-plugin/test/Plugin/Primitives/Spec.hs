@@ -58,6 +58,7 @@ primitives = testNested "Primitives" [
   , goldenUEval "equalsByteString" [ getPlc bsEquals, liftProgram ("hello" :: Builtins.BuiltinByteString), liftProgram ("hello" :: Builtins.BuiltinByteString)]
   , goldenUEval "ltByteString" [ getPlc bsLt, liftProgram ("hello" :: Builtins.BuiltinByteString), liftProgram ("world" :: Builtins.BuiltinByteString)]
   , goldenUEval "decodeUtf8" [ getPlc bsDecode, liftProgram ("hello" :: Builtins.BuiltinByteString)]
+  , goldenUEval "lengthOfByteString" [ getPlc bsLength, liftProgram ("hello" :: Builtins.BuiltinByteString)]
   , goldenPir "verify" verify
   , goldenPir "trace" trace
   , goldenPir "traceComplex" traceComplex
@@ -134,6 +135,9 @@ sha2 = plc (Proxy @"sha2") (\(x :: Builtins.BuiltinByteString) -> Builtins.sha2_
 
 bsEquals :: CompiledCode (Builtins.BuiltinByteString -> Builtins.BuiltinByteString -> Bool)
 bsEquals = plc (Proxy @"bs32Equals") (\(x :: Builtins.BuiltinByteString) (y :: Builtins.BuiltinByteString) -> Builtins.equalsByteString x y)
+
+bsLength :: CompiledCode (Builtins.BuiltinByteString -> Integer)
+bsLength = plc (Proxy @"bs32Length") (\(x :: Builtins.BuiltinByteString) -> Builtins.lengthOfByteString x)
 
 bsLt :: CompiledCode (Builtins.BuiltinByteString -> Builtins.BuiltinByteString -> Bool)
 bsLt = plc (Proxy @"bsLt") (\(x :: Builtins.BuiltinByteString) (y :: Builtins.BuiltinByteString) -> Builtins.lessThanByteString x y)

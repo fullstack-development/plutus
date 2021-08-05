@@ -8,6 +8,7 @@ module PlutusTx.Builtins (
                                 , appendByteString
                                 , takeByteString
                                 , dropByteString
+                                , lengthOfByteString
                                 , emptyByteString
                                 , equalsByteString
                                 , lessThanByteString
@@ -88,6 +89,11 @@ takeByteString n bs = BI.takeByteString (toBuiltin n) bs
 -- | Returns the suffix of a 'ByteString' after n elements.
 dropByteString :: Integer -> BuiltinByteString -> BuiltinByteString
 dropByteString n bs = BI.dropByteString (toBuiltin n) bs
+
+{-# INLINABLE lengthOfByteString #-}
+-- | Returns the length of a 'ByteString'.
+lengthOfByteString :: BuiltinByteString -> Integer
+lengthOfByteString = BI.lengthOfByteString
 
 {-# INLINABLE emptyByteString #-}
 -- | An empty 'ByteString'.
