@@ -27,7 +27,6 @@ packages: doc
           quickcheck-dynamic
           web-ghc
           word-array
-          stubs/plutus-ghc-stub
 
 -- We never, ever, want this.
 write-ghc-environment-files: never
@@ -162,23 +161,20 @@ source-repository-package
   location: https://github.com/input-output-hk/cardano-ledger-specs
   tag: a61e56e9405e2c2ad60969cacef0e9140bb22b94
   subdir:
-    alonzo/impl
     byron/chain/executable-spec
     byron/crypto
     byron/crypto/test
     byron/ledger/executable-spec
     byron/ledger/impl
     byron/ledger/impl/test
-    cardano-ledger-core
     semantics/executable-spec
     semantics/small-steps-test
     shelley/chain-and-ledger/dependencies/non-integer
     shelley/chain-and-ledger/executable-spec
     shelley/chain-and-ledger/shelley-spec-ledger-test
     shelley-ma/impl
-    shelley-ma/shelley-ma-test
---TODO: disabled until it drops its dep on plutus-tx-plugin
---  alonzo/test
+    cardano-ledger-core
+    alonzo/impl
 
 -- A lot of plutus dependencies have to be synchronized with the dependencies of
 -- cardano-node. If you update cardano-node, please make sure that all dependencies
