@@ -55,6 +55,7 @@ data DefaultFun
     | TakeByteString
     | DropByteString
     | LengthOfByteString
+    | IndexByteString
     | Sha2_256
     | Sha3_256
     | VerifySignature
@@ -189,6 +190,10 @@ instance uni ~ DefaultUni => ToBuiltinMeaning uni DefaultFun where
         makeBuiltinMeaning
             BS.length
             mempty -- TODO: budget. To be replace with: (runCostingFunOneArgument . paramLengthOfByteString)
+    toBuiltinMeaning IndexByteString =
+        makeBuiltinMeaning
+            (\xs n -> toInteger $ BS.index xs n)
+            mempty -- TODO: budget. To be replace with: (runCostingFunOneArgument . paramIndexByteString)
     toBuiltinMeaning Sha2_256 =
         makeBuiltinMeaning
             Hash.sha2
@@ -461,6 +466,7 @@ instance Flat DefaultFun where
               ChooseList               -> 53
               Blake2b_256              -> 54
               LengthOfByteString       -> 55
+              IndexByteString          -> 56
 
     decode = go =<< decodeBuiltin
         where go 0  = pure AddInteger
@@ -517,6 +523,7 @@ instance Flat DefaultFun where
               go 53 = pure ChooseList
               go 54 = pure Blake2b_256
               go 55 = pure LengthOfByteString
+              go 56 = pure IndexByteString
               go _  = fail "Failed to decode BuiltinName"
 
     size _ n = n + builtinTagWidth

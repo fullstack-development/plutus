@@ -161,8 +161,12 @@ dropByteString :: BuiltinInteger -> BuiltinByteString -> BuiltinByteString
 dropByteString n (BuiltinByteString b) = BuiltinByteString $ BS.drop (fromIntegral n) b
 
 {-# NOINLINE lengthOfByteString #-}
-lengthOfByteString :: BuiltinByteString -> Integer
+lengthOfByteString :: BuiltinByteString -> BuiltinInteger
 lengthOfByteString (BuiltinByteString b) = toInteger $ BS.length b
+
+{-# NOINLINE indexByteString #-}
+indexByteString :: BuiltinByteString -> BuiltinInteger -> BuiltinInteger
+indexByteString (BuiltinByteString b) i = toInteger $ BS.index b (fromInteger i)
 
 {-# NOINLINE emptyByteString #-}
 emptyByteString :: BuiltinByteString

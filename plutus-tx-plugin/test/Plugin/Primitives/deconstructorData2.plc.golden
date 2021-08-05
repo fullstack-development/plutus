@@ -200,7 +200,7 @@
             (termbind
               (strict)
               (vardecl
-                sfFromBuiltinBuiltinListNil_cfromBuiltin_go
+                unsafeDataAsList_go
                 (fun [(con list) (con data)] [List (con data)])
               )
               (lam
@@ -222,19 +222,8 @@
                       ds
                       (con unit)
                       [
-<<<<<<< HEAD
                         [ { Cons (con data) } [ { head (con data) } l ] ]
                         [ unsafeDataAsList_go [ { tail (con data) } l ] ]
-=======
-                        [
-                          { Cons (con data) }
-                          [ { (builtin headList) (con data) } l ]
-                        ]
-                        [
-                          sfFromBuiltinBuiltinListNil_cfromBuiltin_go
-                          [ { (builtin tailList) (con data) } l ]
-                        ]
->>>>>>> Rename concatenate to appendByteString.
                       ]
                     )
                   ]
@@ -268,19 +257,8 @@
                         [ { { fst (con integer) } [(con list) (con data)] } p ]
                       ]
                       [
-<<<<<<< HEAD
                         unsafeDataAsList_go
                         [ { { snd (con integer) } [(con list) (con data)] } p ]
-=======
-                        sfFromBuiltinBuiltinListNil_cfromBuiltin_go
-                        [
-                          {
-                            { (builtin sndPair) (con integer) }
-                            [(con list) (con data)]
-                          }
-                          p
-                        ]
->>>>>>> Rename concatenate to appendByteString.
                       ]
                     ]
                   )

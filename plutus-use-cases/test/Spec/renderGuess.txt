@@ -102,12 +102,15 @@ Balances Carried Forward:
 
 ==== Slot #1, Tx #0 ====
 <<<<<<< HEAD
+<<<<<<< HEAD
 TxId:       a4404050955c9df01fa89cf8fb63a906d28f2bf0a5f97c4c190dd51a62fce38b
 Fee:        Ada:      Lovelace:  10
 Mint:       -
 Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 584098c202476d3d3f9497572d906b196ba2cfa9...
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       11f1d166b6d6e0023d3093e12459e2088e2c1b89357ac514a142cb521f4ee041
 Fee:        Ada:      Lovelace:  10
@@ -115,6 +118,8 @@ Mint:       -
 Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 58403ebba05fd290873266c9f46a817e4c31b8a3...
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       da69b9246b8c5eb6ef58e684f60e6aa4c7b3aafced73af2c3b9bd35764dd1444
 Fee:        Ada:      Lovelace:  10
@@ -123,11 +128,14 @@ Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 58400e292e91c6cb1ca15449d555447285091b24...
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
 TxId:       a0ef6da6ad38e0181a1ad314ac447dd49ca22b04e596dd131f3ff0e99f162ec9
 Fee:        Ada:      Lovelace:  10
 Mint:       -
 Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 584035f5b2ebdd54329867b0f36182b36dc2632b...
+<<<<<<< HEAD
 =======
 TxId:       d36c020d752f8f7d9b70b67f8b3fbdec4d3990b0aa3beca9703dd2ebe388b77f
 Fee:        Ada:      Lovelace:  10
@@ -136,8 +144,16 @@ Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 5840aa36ef6828edc1bd9dfadd1b730731197ea7...
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 Inputs:
   ---- Input 0 ----
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
@@ -157,11 +173,16 @@ Outputs:
 
   ---- Output 1 ----
 <<<<<<< HEAD
+<<<<<<< HEAD
   Destination:  Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Destination:  Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Destination:  Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
@@ -171,8 +192,17 @@ Outputs:
   Destination:  Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+  Destination:  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  8
 
@@ -219,11 +249,16 @@ Balances Carried Forward:
     Ada:      Lovelace:  100000000
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
@@ -233,22 +268,38 @@ Balances Carried Forward:
   Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  8
 
 ==== Slot #2, Tx #0 ====
 <<<<<<< HEAD
+<<<<<<< HEAD
 TxId:       54ed9863cee6c2afc47cec0592be542fb692f3aff2c7d35bcc6663e70025a9bc
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       59bc10eb00265c9a7962dc09b4ec5d0549aca255d381830029e366827af9c50f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       cdc066b97cda19f16476afa16a5547cbae84ebbe4ee3420b2468ddb2fc0d83c7
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
 TxId:       2b6df0a1b4f0f60fdbe00fe4476b064846e295d059368cf046d34b7882263c81
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
@@ -266,6 +317,7 @@ Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 5840a27b1c4250ca072af835670506cf0d417cff...
 =======
               Signature: 5840c45365990a86ae76131fb91af28d6f2879a9...
+<<<<<<< HEAD
 =======
 TxId:       a689a691bb3956e02142e0e9527bf2251774c25085f1d28083d70fa9d3dab98b
 Fee:        Ada:      Lovelace:  13054
@@ -274,8 +326,16 @@ Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 584032bea3cb9615bfc5ca1ab325689da86b21d8...
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 Inputs:
   ---- Input 0 ----
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
@@ -283,11 +343,16 @@ Inputs:
     Ada:      Lovelace:  99999982
   Source:
 <<<<<<< HEAD
+<<<<<<< HEAD
     Tx:     a4404050955c9df01fa89cf8fb63a906d28f2bf0a5f97c4c190dd51a62fce38b
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     Tx:     11f1d166b6d6e0023d3093e12459e2088e2c1b89357ac514a142cb521f4ee041
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     Tx:     da69b9246b8c5eb6ef58e684f60e6aa4c7b3aafced73af2c3b9bd35764dd1444
 =======
@@ -297,22 +362,38 @@ Inputs:
     Tx:     d36c020d752f8f7d9b70b67f8b3fbdec4d3990b0aa3beca9703dd2ebe388b77f
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+    Tx:     a0ef6da6ad38e0181a1ad314ac447dd49ca22b04e596dd131f3ff0e99f162ec9
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
     Output #0
 
 
   ---- Input 1 ----
 <<<<<<< HEAD
+<<<<<<< HEAD
   Destination:  Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Destination:  Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Destination:  Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
   Destination:  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
@@ -332,6 +413,7 @@ Inputs:
     Script: 5912cf78da95587f6c1bd77dffbee3237927d3ca...
 =======
     Script: 591d8b0100003323322333222333222323233223...
+<<<<<<< HEAD
 =======
   Destination:  Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
   Value:
@@ -342,15 +424,22 @@ Inputs:
     Script: 591ef60100003323322333222333222323233223...
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
 
 Outputs:
   ---- Output 0 ----
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987370
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  -
@@ -362,17 +451,27 @@ Outputs:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  -
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  -
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986928
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  -
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   ---- Output 1 ----
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
+<<<<<<< HEAD
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
     Ada:      -
@@ -380,6 +479,8 @@ Outputs:
   ---- Output 2 ----
   Destination:  Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     7ae589a570c8022c4b653329a4c0b0ec4cbc7650881dae4de3646aea:  guess:    1
     Ada:      -
@@ -387,6 +488,8 @@ Outputs:
   ---- Output 2 ----
   Destination:  Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
     Ada:      -
@@ -395,11 +498,14 @@ Outputs:
   Destination:  Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
     Ada:      -
 
   ---- Output 2 ----
   Destination:  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+<<<<<<< HEAD
 =======
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
     Ada:      -
@@ -408,8 +514,16 @@ Outputs:
   Destination:  Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  8
 
@@ -417,7 +531,6 @@ Outputs:
 Balances Carried Forward:
   PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987370
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
@@ -429,13 +542,22 @@ Balances Carried Forward:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986928
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   PubKeyHash: 3c88c96ed5ab14b16a32771bcfcb49928a5557fc... (Wallet 10)
   Value:
@@ -474,11 +596,16 @@ Balances Carried Forward:
     Ada:      Lovelace:  100000000
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
@@ -488,12 +615,22 @@ Balances Carried Forward:
   Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  8
 
 ==== Slot #3, Tx #0 ====
+<<<<<<< HEAD
 <<<<<<< HEAD
 TxId:       4c83151513acf2ed371c4d101d5ec2568aee917f52188c3e3424f0f0c5b8404f
 Fee:        Ada:      Lovelace:  10
@@ -501,6 +638,8 @@ Mint:       -
 Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 58401689050c0cac4415deab73ff6a714791ce16...
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       09ea50dce2cfaba412ddfe1b31a7e1ae3f77a0a16b4e01122fbbe6ff8ee20f80
 Fee:        Ada:      Lovelace:  10
@@ -508,6 +647,8 @@ Mint:       -
 Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 5840278b931f3e9a144749af59ffb4febf820103...
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       5cfc352363db1b055dac73fbb734258ab283ff153a7efae2c435897f8a1b586f
 Fee:        Ada:      Lovelace:  10
@@ -516,11 +657,14 @@ Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 58404f487e4f8d4d0f16127c81de3576174cbbf6...
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
 TxId:       b865119649ed0fd692ef17b9c71a1107dcede0bc0ee2c2137a37fcad9bc81a97
 Fee:        Ada:      Lovelace:  10
 Mint:       -
 Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 58409c621e22ef89b251d3ccf988ae87fd5c0b60...
+<<<<<<< HEAD
 =======
 TxId:       f29eee5b7cb28ac562ba51d3206158db1c92126f8416e016006fa5e02925f0d6
 Fee:        Ada:      Lovelace:  10
@@ -529,13 +673,20 @@ Signatures  PubKey: d75a980182b10ab7d54bfed3c964073a0ee172f3...
               Signature: 5840a6029e7b08082e53998e7850e47f7377bf09...
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 Inputs:
   ---- Input 0 ----
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987370
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  -
   Source:
@@ -549,6 +700,7 @@ Inputs:
     Tx:     cdc066b97cda19f16476afa16a5547cbae84ebbe4ee3420b2468ddb2fc0d83c7
 =======
     Tx:     2b6df0a1b4f0f60fdbe00fe4476b064846e295d059368cf046d34b7882263c81
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986928
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  -
@@ -556,8 +708,16 @@ Inputs:
     Tx:     a689a691bb3956e02142e0e9527bf2251774c25085f1d28083d70fa9d3dab98b
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
     Output #0
 
 
@@ -565,17 +725,22 @@ Inputs:
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
 <<<<<<< HEAD
+<<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
     Ada:      -
   Source:
     Tx:     54ed9863cee6c2afc47cec0592be542fb692f3aff2c7d35bcc6663e70025a9bc
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     7ae589a570c8022c4b653329a4c0b0ec4cbc7650881dae4de3646aea:  guess:    1
     Ada:      -
   Source:
     Tx:     59bc10eb00265c9a7962dc09b4ec5d0549aca255d381830029e366827af9c50f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
     Ada:      -
@@ -583,10 +748,13 @@ Inputs:
     Tx:     cdc066b97cda19f16476afa16a5547cbae84ebbe4ee3420b2468ddb2fc0d83c7
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
     Ada:      -
   Source:
     Tx:     2b6df0a1b4f0f60fdbe00fe4476b064846e295d059368cf046d34b7882263c81
+<<<<<<< HEAD
 =======
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
     Ada:      -
@@ -594,8 +762,16 @@ Inputs:
     Tx:     a689a691bb3956e02142e0e9527bf2251774c25085f1d28083d70fa9d3dab98b
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
     Output #1
 
 
@@ -604,7 +780,6 @@ Outputs:
   ---- Output 0 ----
   Destination:  PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987360
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    0
@@ -616,23 +791,37 @@ Outputs:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    0
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    0
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986918
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    0
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   ---- Output 1 ----
   Destination:  PubKeyHash: 977efb35ab621d39dbeb7274ec7795a34708ff4d... (Wallet 2)
   Value:
 <<<<<<< HEAD
+<<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     7ae589a570c8022c4b653329a4c0b0ec4cbc7650881dae4de3646aea:  guess:    1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
 =======
@@ -642,14 +831,22 @@ Outputs:
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+    a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
 
 Balances Carried Forward:
   PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987360
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    0
@@ -661,13 +858,22 @@ Balances Carried Forward:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    0
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    0
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986918
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    0
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   PubKeyHash: 3c88c96ed5ab14b16a32771bcfcb49928a5557fc... (Wallet 10)
   Value:
@@ -693,11 +899,16 @@ Balances Carried Forward:
   Value:
     Ada:      Lovelace:  100000000
 <<<<<<< HEAD
+<<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     7ae589a570c8022c4b653329a4c0b0ec4cbc7650881dae4de3646aea:  guess:    1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
 =======
@@ -707,8 +918,17 @@ Balances Carried Forward:
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+    a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   PubKeyHash: b1fd7c427a17e57c112473449d8b237484c5ebf6... (Wallet 7)
   Value:
@@ -723,11 +943,16 @@ Balances Carried Forward:
     Ada:      Lovelace:  100000000
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
@@ -737,22 +962,38 @@ Balances Carried Forward:
   Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  8
 
 ==== Slot #4, Tx #0 ====
 <<<<<<< HEAD
+<<<<<<< HEAD
 TxId:       5e67b6703caf09bdccadde5c3a9a91472782a6d93613733fbd78f0f34570830a
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       22c0465739aa5e18c34fd395a98ac076abbd83d3d88fa6b7037964140bd983b8
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
 TxId:       23616e99222d1528a61c90828e433c8d36cd836cbb09922f7985550d7380c90b
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
 TxId:       719f465bbefef4d42682606317cafef065f7a91510429a49e7213f05a6326e1c
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
@@ -770,6 +1011,7 @@ Signatures  PubKey: 3d4017c3e843895a92b70aa74d1b7ebc9c982ccf...
               Signature: 5840f7a9a5f2f52e61f4f37367a633480b997efb...
 =======
               Signature: 58401c613a84ba1561ec0fd13e191c3eac7ca41d...
+<<<<<<< HEAD
 =======
 TxId:       b7af4b99d0b63dd81b9ea3c10c969b949bb3bbf94d611c8957e0363cca680175
 Fee:        Ada:      Lovelace:  13054
@@ -778,8 +1020,16 @@ Signatures  PubKey: 3d4017c3e843895a92b70aa74d1b7ebc9c982ccf...
               Signature: 584089df5580b410cf36723d93529450f03f0ee1...
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 Inputs:
   ---- Input 0 ----
   Destination:  PubKeyHash: 977efb35ab621d39dbeb7274ec7795a34708ff4d... (Wallet 2)
@@ -792,9 +1042,12 @@ Inputs:
 
   ---- Input 1 ----
 <<<<<<< HEAD
+<<<<<<< HEAD
   Destination:  PubKeyHash: 977efb35ab621d39dbeb7274ec7795a34708ff4d... (Wallet 2)
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
   Destination:  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
 >>>>>>> Rename concatenate to appendByteString.
   Value:
@@ -816,6 +1069,7 @@ Inputs:
     Tx:     2b6df0a1b4f0f60fdbe00fe4476b064846e295d059368cf046d34b7882263c81
     Output #2
     Script: 591d8b0100003323322333222333222323233223...
+<<<<<<< HEAD
 =======
   Destination:  Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
   Value:
@@ -826,10 +1080,13 @@ Inputs:
     Script: 591ef60100003323322333222333222323233223...
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+=======
+>>>>>>> Add indexByteString
 
   ---- Input 2 ----
   Destination:  Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
   Value:
+<<<<<<< HEAD
 <<<<<<< HEAD
     Ada:      Lovelace:  8
   Source:
@@ -844,14 +1101,11 @@ Inputs:
     Script: 5912cf78da95587f6c1bd77dffbee3237927d3ca...
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
   Source:
     Tx:     b865119649ed0fd692ef17b9c71a1107dcede0bc0ee2c2137a37fcad9bc81a97
-=======
-    21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
-  Source:
-    Tx:     f29eee5b7cb28ac562ba51d3206158db1c92126f8416e016006fa5e02925f0d6
->>>>>>> Rename concatenate to appendByteString.
     Output #1
 
 >>>>>>> Rename concatenate to appendByteString.
@@ -863,7 +1117,6 @@ Outputs:
   ---- Output 0 ----
   Destination:  PubKeyHash: 977efb35ab621d39dbeb7274ec7795a34708ff4d... (Wallet 2)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987391
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    0
@@ -875,17 +1128,27 @@ Outputs:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    0
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    0
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986949
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    0
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   ---- Output 1 ----
   Destination:  PubKeyHash: 977efb35ab621d39dbeb7274ec7795a34708ff4d... (Wallet 2)
   Value:
+<<<<<<< HEAD
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
     Ada:      -
@@ -893,6 +1156,8 @@ Outputs:
   ---- Output 2 ----
   Destination:  Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     7ae589a570c8022c4b653329a4c0b0ec4cbc7650881dae4de3646aea:  guess:    1
     Ada:      -
@@ -900,6 +1165,8 @@ Outputs:
   ---- Output 2 ----
   Destination:  Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
     Ada:      -
@@ -908,11 +1175,14 @@ Outputs:
   Destination:  Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Add indexByteString
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
     Ada:      -
 
   ---- Output 2 ----
   Destination:  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+<<<<<<< HEAD
 =======
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
     Ada:      -
@@ -921,8 +1191,16 @@ Outputs:
   Destination:  Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  5
 
@@ -930,7 +1208,6 @@ Outputs:
 Balances Carried Forward:
   PubKeyHash: 35dedd2982a03cf39e7dce03c839994ffdec2ec6... (Wallet 1)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987360
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    0
@@ -942,13 +1219,22 @@ Balances Carried Forward:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    0
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    0
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986918
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    0
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   PubKeyHash: 3c88c96ed5ab14b16a32771bcfcb49928a5557fc... (Wallet 10)
   Value:
@@ -972,7 +1258,6 @@ Balances Carried Forward:
 
   PubKeyHash: 977efb35ab621d39dbeb7274ec7795a34708ff4d... (Wallet 2)
   Value:
-<<<<<<< HEAD
     Ada:      Lovelace:  99987391
 <<<<<<< HEAD
     8d3e7187b221e8e308702c2cd5f82f2af4b7ff10111ca1dfc023bd94:  guess:    1
@@ -984,13 +1269,22 @@ Balances Carried Forward:
     9e75e16fea2ca1dd6b0580c0a360406193e6940949642c763ca80dcb:  guess:    1
 =======
     a23e0a9b9367954bbd1a8536784cecd5c7e95d20154e54bdc7a51345:  guess:    1
+<<<<<<< HEAD
 =======
     Ada:      Lovelace:  99986949
     21b638975a156246aef9049ee58e788a8c7689481741c01cc0963d7f:  guess:    1
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
 
   PubKeyHash: b1fd7c427a17e57c112473449d8b237484c5ebf6... (Wallet 7)
   Value:
@@ -1005,11 +1299,16 @@ Balances Carried Forward:
     Ada:      Lovelace:  100000000
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Script: 87bc6494fe2791c0d676b506a3a792764bd84233a92c15596d99abd1
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 7643a73ad2dca32b0830b19bcdda189f705af2ac117720ce1fcbc41f
 =======
+=======
+>>>>>>> Add indexByteString
 <<<<<<< HEAD
   Script: 56b747c2499e95c7c7844552eb64ea86f0bdec04d5df96891bb9d10d
 =======
@@ -1019,7 +1318,16 @@ Balances Carried Forward:
   Script: e0e076b12a77350e698f57645f779a109bf49b1825ab8c1d5ba4f74a
 >>>>>>> Rename concatenate to appendByteString.
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+<<<<<<< HEAD
 >>>>>>> Rename concatenate to appendByteString.
+=======
+=======
+=======
+  Script: 2f42c00813badd9ec0f52c16ee9cf33ab028cedd3f06c4e8ebadbc16
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
+>>>>>>> Add indexByteString
   Value:
     Ada:      Lovelace:  5
