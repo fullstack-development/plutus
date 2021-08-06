@@ -775,7 +775,6 @@
         plutus-contract = ./.plan.nix/plutus-contract.nix;
         iohk-monitoring = ./.plan.nix/iohk-monitoring.nix;
         io-sim = ./.plan.nix/io-sim.nix;
-        cardano-ledger-shelley-ma-test = ./.plan.nix/cardano-ledger-shelley-ma-test.nix;
         cardano-crypto-test = ./.plan.nix/cardano-crypto-test.nix;
         web-ghc = ./.plan.nix/web-ghc.nix;
         cardano-ledger-byron = ./.plan.nix/cardano-ledger-byron.nix;
@@ -931,7 +930,6 @@
               };
             };
           "io-sim" = { flags = { "asserts" = lib.mkOverride 900 false; }; };
-          "cardano-ledger-shelley-ma-test" = { flags = {}; };
           "cardano-crypto-test" = {
             flags = { "development" = lib.mkOverride 900 false; };
             };
@@ -1318,7 +1316,6 @@
           "http-media".components.library.planned = lib.mkOverride 900 true;
           "size-based".components.library.planned = lib.mkOverride 900 true;
           "psqueues".components.library.planned = lib.mkOverride 900 true;
-          "cardano-ledger-shelley-ma-test".components.library.planned = lib.mkOverride 900 true;
           "systemd".components.library.planned = lib.mkOverride 900 true;
           "cryptohash".components.library.planned = lib.mkOverride 900 true;
           "call-stack".components.library.planned = lib.mkOverride 900 true;

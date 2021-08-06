@@ -2,11 +2,9 @@
 # Builds Haskell packages with Haskell.nix
 ############################################################################
 { lib
-, stdenv
 , rPackages
 , haskell-nix
 , agdaWithStdlib
-, buildPackages
 , gitignore-nix
 , z3
 , R
@@ -20,7 +18,7 @@
 }:
 let
   r-packages = with rPackages; [ R tidyverse dplyr stringr MASS plotly shiny shinyjs purrr ];
-  project = haskell-nix.cabalProject' {
+  project = haskell-nix.cabalProject' ({pkgs, ...}: let inherit (pkgs) stdenv; in {
     inherit compiler-nix-name;
     # This is incredibly difficult to get right, almost everything goes wrong, see https://github.com/input-output-hk/haskell.nix/issues/496
     src = let root = ../../../.; in
@@ -58,7 +56,7 @@ let
       "https://github.com/input-output-hk/Win32-network"."94153b676617f8f33abe8d8182c37377d2784bd1" = "0pb7bg0936fldaa5r08nqbxvi2g8pcy4w3c7kdcg7pdgmimr30ss";
       "https://github.com/input-output-hk/hedgehog-extras"."8bcd3c9dc22cc44f9fcfe161f4638a384fc7a187" = "12viwpahjdfvlqpnzdgjp40nw31rvyznnab1hml9afpaxd6ixh70";
     };
-    cabalProjectLocal = lib.optionalString stdenv.hostPlatform.isWindows ''
+    cabalProjectLocal = lib.optionalString stdenv.hostPlatform.isWindows (''
       -- The following is needed because Nix is doing something crazy.
       package byron-spec-ledger
         tests: False
@@ -89,7 +87,7 @@ let
 
       package cardano-config
         flags: -systemd
-    '';
+    '');
     modules = [
       # Allow reinstallation of Win32
       ({ pkgs, ... }: lib.mkIf pkgs.stdenv.hostPlatform.isWindows {
@@ -272,7 +270,7 @@ let
       enableLibraryProfiling = true;
       enableExecutableProfiling = true;
     };
-  };
+  });
 
 in
 project
