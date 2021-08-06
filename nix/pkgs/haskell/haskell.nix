@@ -18,7 +18,7 @@
 }:
 let
   r-packages = with rPackages; [ R tidyverse dplyr stringr MASS plotly shiny shinyjs purrr ];
-  project = haskell-nix.cabalProject' ({pkgs, ...}: let inherit (pkgs) stdenv; in {
+  project = haskell-nix.cabalProject' ({ pkgs, ... }: {
     inherit compiler-nix-name;
     # This is incredibly difficult to get right, almost everything goes wrong, see https://github.com/input-output-hk/haskell.nix/issues/496
     src = let root = ../../../.; in
@@ -35,9 +35,9 @@ let
     # At the moment, we only need one but conceivably we might need one for darwin in future.
     # See https://github.com/input-output-hk/nix-tools/issues/97
     materialized =
-      if stdenv.hostPlatform.isLinux then ./materialized-linux
-      else if stdenv.hostPlatform.isDarwin then ./materialized-darwin
-      else if stdenv.hostPlatform.isWindows then ./materialized-windows
+      if pkgs.stdenv.hostPlatform.isLinux then ./materialized-linux
+      else if pkgs.stdenv.hostPlatform.isDarwin then ./materialized-darwin
+      else if pkgs.stdenv.hostPlatform.isWindows then ./materialized-windows
       else builtins.error "Don't have materialized files for this platform";
     # If true, we check that the generated files are correct. Set in the CI so we don't make mistakes.
     inherit checkMaterialization;
@@ -56,7 +56,7 @@ let
       "https://github.com/input-output-hk/Win32-network"."94153b676617f8f33abe8d8182c37377d2784bd1" = "0pb7bg0936fldaa5r08nqbxvi2g8pcy4w3c7kdcg7pdgmimr30ss";
       "https://github.com/input-output-hk/hedgehog-extras"."8bcd3c9dc22cc44f9fcfe161f4638a384fc7a187" = "12viwpahjdfvlqpnzdgjp40nw31rvyznnab1hml9afpaxd6ixh70";
     };
-    cabalProjectLocal = lib.optionalString stdenv.hostPlatform.isWindows (''
+    cabalProjectLocal = lib.optionalString pkgs.stdenv.hostPlatform.isWindows ''
       -- The following is needed because Nix is doing something crazy.
       package byron-spec-ledger
         tests: False
@@ -87,7 +87,7 @@ let
 
       package cardano-config
         flags: -systemd
-    '');
+    '';
     modules = [
       # Allow reinstallation of Win32
       ({ pkgs, ... }: lib.mkIf pkgs.stdenv.hostPlatform.isWindows {
