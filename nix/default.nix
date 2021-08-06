@@ -23,7 +23,7 @@ let
 
   extraOverlays =
     # Haskell.nix (https://github.com/input-output-hk/haskell.nix)
-    haskellNix.overlays
+    haskellNix.nixpkgsArgs.overlays
     # our own overlays:
     # needed for cardano-api wich uses a patched libsodium
     ++ iohkNixMain.overlays.crypto
@@ -36,7 +36,7 @@ let
     # which breaks flake's pure evaluation.
     localSystem = { inherit system; };
     overlays = extraOverlays ++ overlays;
-    config = haskellNix.config // config;
+    config = haskellNix.nixpkgsArgs.config // config;
   };
 
   plutus = import ./pkgs { inherit pkgs checkMaterialization enableHaskellProfiling sources; };
