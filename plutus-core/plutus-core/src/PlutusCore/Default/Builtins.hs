@@ -52,6 +52,7 @@ data DefaultFun
     | GreaterThanEqualsInteger
     | EqualsInteger
     | AppendByteString
+    | ConsByteString
     | TakeByteString
     | DropByteString
     | LengthOfByteString
@@ -178,6 +179,10 @@ instance uni ~ DefaultUni => ToBuiltinMeaning uni DefaultFun where
         makeBuiltinMeaning
             BS.append
             (runCostingFunTwoArguments . paramAppendByteString)
+    toBuiltinMeaning ConsByteString =
+        makeBuiltinMeaning
+            (\n xs -> BSC.cons (chr $ fromIntegral @Integer n) xs)
+            mempty -- TODO: budget. To be replace with: (runCostingFunOneArgument . paramIndexByteString)
     toBuiltinMeaning TakeByteString =
         makeBuiltinMeaning
             BS.take
@@ -467,6 +472,7 @@ instance Flat DefaultFun where
               Blake2b_256              -> 54
               LengthOfByteString       -> 55
               IndexByteString          -> 56
+              ConsByteString           -> 57
 
     decode = go =<< decodeBuiltin
         where go 0  = pure AddInteger
@@ -524,6 +530,7 @@ instance Flat DefaultFun where
               go 54 = pure Blake2b_256
               go 55 = pure LengthOfByteString
               go 56 = pure IndexByteString
+              go 57 = pure ConsByteString
               go _  = fail "Failed to decode BuiltinName"
 
     size _ n = n + builtinTagWidth

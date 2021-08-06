@@ -158,6 +158,7 @@ builtinNames :: [TH.Name]
 builtinNames = [
       ''Builtins.BuiltinByteString
     , 'Builtins.appendByteString
+    , 'Builtins.consByteString
     , 'Builtins.takeByteString
     , 'Builtins.dropByteString
     , 'Builtins.lengthOfByteString
@@ -280,6 +281,7 @@ defineBuiltinTerms = do
 
     -- Bytestring builtins
     defineBuiltinTerm 'Builtins.appendByteString $ mkBuiltin PLC.AppendByteString
+    defineBuiltinTerm 'Builtins.consByteString $ mkBuiltin PLC.ConsByteString
     defineBuiltinTerm 'Builtins.takeByteString $ mkBuiltin PLC.TakeByteString
     defineBuiltinTerm 'Builtins.dropByteString $ mkBuiltin PLC.DropByteString
     defineBuiltinTerm 'Builtins.lengthOfByteString $ mkBuiltin PLC.LengthOfByteString

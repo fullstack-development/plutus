@@ -17,6 +17,7 @@ import qualified Data.ByteArray            as BA
 import           Data.ByteString           as BS
 import           Data.ByteString.Char8     as Char8
 import qualified Data.ByteString.Hash      as Hash
+import           Data.Char
 import           Data.Coerce
 import           Data.Hashable             (Hashable)
 import           Data.Maybe                (fromMaybe)
@@ -151,6 +152,10 @@ instance Pretty BuiltinByteString where
 {-# NOINLINE appendByteString #-}
 appendByteString :: BuiltinByteString -> BuiltinByteString -> BuiltinByteString
 appendByteString (BuiltinByteString b1) (BuiltinByteString b2) = BuiltinByteString $ BS.append b1 b2
+
+{-# NOINLINE consByteString #-}
+consByteString :: BuiltinInteger -> BuiltinByteString -> BuiltinByteString
+consByteString n (BuiltinByteString b) = BuiltinByteString $ Char8.cons (chr $ fromIntegral n) b
 
 {-# NOINLINE takeByteString #-}
 takeByteString :: BuiltinInteger -> BuiltinByteString -> BuiltinByteString

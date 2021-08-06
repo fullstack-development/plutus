@@ -60,6 +60,7 @@ primitives = testNested "Primitives" [
   , goldenUEval "decodeUtf8" [ getPlc bsDecode, liftProgram ("hello" :: Builtins.BuiltinByteString)]
   , goldenUEval "lengthOfByteString" [ getPlc bsLength, liftProgram ("hello" :: Builtins.BuiltinByteString)]
   , goldenUEval "indexByteString" [ getPlc bsIndex, liftProgram ("hello" :: Builtins.BuiltinByteString), liftProgram (0 :: Integer)]
+  , goldenUEval "consByteString" [ getPlc bsCons, liftProgram (104 :: Integer), liftProgram ("ello" :: Builtins.BuiltinByteString)]
   , goldenPir "verify" verify
   , goldenPir "trace" trace
   , goldenPir "traceComplex" traceComplex
@@ -142,6 +143,9 @@ bsLength = plc (Proxy @"bs32Length") (\(x :: Builtins.BuiltinByteString) -> Buil
 
 bsIndex :: CompiledCode (Builtins.BuiltinByteString -> Integer -> Integer)
 bsIndex = plc (Proxy @"bs32Index") (\(x :: Builtins.BuiltinByteString) (n :: Integer) -> Builtins.indexByteString x n)
+
+bsCons :: CompiledCode (Integer -> Builtins.BuiltinByteString -> Builtins.BuiltinByteString)
+bsCons = plc (Proxy @"bs32Cons") (\(n :: Integer) (x :: Builtins.BuiltinByteString) -> Builtins.consByteString n x)
 
 bsLt :: CompiledCode (Builtins.BuiltinByteString -> Builtins.BuiltinByteString -> Bool)
 bsLt = plc (Proxy @"bsLt") (\(x :: Builtins.BuiltinByteString) (y :: Builtins.BuiltinByteString) -> Builtins.lessThanByteString x y)
