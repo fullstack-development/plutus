@@ -165,6 +165,10 @@ takeByteString n (BuiltinByteString b) = BuiltinByteString $ BS.take (fromIntegr
 dropByteString :: BuiltinInteger -> BuiltinByteString -> BuiltinByteString
 dropByteString n (BuiltinByteString b) = BuiltinByteString $ BS.drop (fromIntegral n) b
 
+{-# NOINLINE sliceByteString #-}
+sliceByteString :: BuiltinInteger -> BuiltinInteger -> BuiltinByteString -> BuiltinByteString
+sliceByteString from to (BuiltinByteString b) = BuiltinByteString $ BS.take (fromIntegral $ to - from + 1) (BS.drop (fromIntegral from) b)
+
 {-# NOINLINE lengthOfByteString #-}
 lengthOfByteString :: BuiltinByteString -> BuiltinInteger
 lengthOfByteString (BuiltinByteString b) = toInteger $ BS.length b

@@ -340,7 +340,7 @@ main = do
                                                        , LessThanEqualsInteger
                                                        ])
                       <> (benchTwoByteStrings <$> [AppendByteString])
-                      <> (benchBytestringOperations <$> [DropByteString, TakeByteString])
+                      <> (benchBytestringOperations <$> [DropByteString, TakeByteString, SliceByteString])
                       <> (benchHashOperations <$> [Sha2_256, Sha3_256])
                       <> (benchSameTwoByteStrings <$> [ EqualsByteString
                                                       , LessThanByteString

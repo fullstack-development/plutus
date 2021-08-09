@@ -9,6 +9,7 @@ module PlutusTx.Builtins (
                                 , consByteString
                                 , takeByteString
                                 , dropByteString
+                                , sliceByteString
                                 , lengthOfByteString
                                 , indexByteString
                                 , emptyByteString
@@ -86,6 +87,11 @@ appendByteString = BI.appendByteString
 -- | Adds a byte to the front of a 'ByteString'.
 consByteString :: Integer -> BuiltinByteString -> BuiltinByteString
 consByteString n bs = BI.consByteString (toBuiltin n) bs
+
+{-# INLINABLE sliceByteString #-}
+-- | Returns the substring of a 'ByteString'.
+sliceByteString :: Integer -> Integer -> BuiltinByteString -> BuiltinByteString
+sliceByteString from to bs = BI.sliceByteString (toBuiltin from) (toBuiltin to) bs
 
 {-# INLINABLE takeByteString #-}
 -- | Returns the n length prefix of a 'ByteString'.

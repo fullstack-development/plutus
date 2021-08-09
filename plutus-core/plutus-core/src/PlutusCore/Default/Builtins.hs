@@ -55,6 +55,7 @@ data DefaultFun
     | ConsByteString
     | TakeByteString
     | DropByteString
+    | SliceByteString
     | LengthOfByteString
     | IndexByteString
     | Sha2_256
@@ -191,6 +192,10 @@ instance uni ~ DefaultUni => ToBuiltinMeaning uni DefaultFun where
         makeBuiltinMeaning
             BS.drop
             (runCostingFunTwoArguments . paramDropByteString)
+    toBuiltinMeaning SliceByteString =
+        makeBuiltinMeaning
+            (\from to xs -> BS.take (to - from + 1) (BS.drop from xs))
+            mempty -- TODO: budget. To be replace with: (runCostingFunOneArgument . paramSliceByteString)
     toBuiltinMeaning LengthOfByteString =
         makeBuiltinMeaning
             BS.length
@@ -473,6 +478,7 @@ instance Flat DefaultFun where
               LengthOfByteString       -> 55
               IndexByteString          -> 56
               ConsByteString           -> 57
+              SliceByteString          -> 58
 
     decode = go =<< decodeBuiltin
         where go 0  = pure AddInteger
@@ -486,6 +492,8 @@ instance Flat DefaultFun where
               go 8  = pure GreaterThanEqualsInteger
               go 9  = pure EqualsInteger
               go 10 = pure AppendByteString
+              go 11 = pure TakeByteString
+              go 12 = pure DropByteString
               go 13 = pure Sha2_256
               go 14 = pure Sha3_256
               go 15 = pure VerifySignature
@@ -531,6 +539,7 @@ instance Flat DefaultFun where
               go 55 = pure LengthOfByteString
               go 56 = pure IndexByteString
               go 57 = pure ConsByteString
+              go 58 = pure SliceByteString
               go _  = fail "Failed to decode BuiltinName"
 
     size _ n = n + builtinTagWidth
