@@ -31,7 +31,7 @@ import qualified Data.ByteString.Hash                           as Hash
 import           Data.Char
 import           Data.Ix
 import           Data.Word                                      (Word8)
-import           Flat
+import           Flat                                           hiding (from, to)
 import           Flat.Decoder
 import           Flat.Encoder                                   as Flat
 
@@ -183,7 +183,7 @@ instance uni ~ DefaultUni => ToBuiltinMeaning uni DefaultFun where
     toBuiltinMeaning ConsByteString =
         makeBuiltinMeaning
             (\n xs -> BSC.cons (chr $ fromIntegral @Integer n) xs)
-            mempty -- TODO: budget. To be replace with: (runCostingFunOneArgument . paramIndexByteString)
+            mempty -- TODO: budget. To be replace with: (runCostingFunOneArgument . paramConsByteString)
     toBuiltinMeaning TakeByteString =
         makeBuiltinMeaning
             BS.take
