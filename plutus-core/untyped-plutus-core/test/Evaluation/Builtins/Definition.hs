@@ -24,13 +24,18 @@ import           PlutusCore.StdLib.Data.Bool
 import qualified PlutusCore.StdLib.Data.Function                 as Plc
 import           PlutusCore.StdLib.Data.Integer
 import qualified PlutusCore.StdLib.Data.List                     as Builtin
+import           PlutusCore.StdLib.Data.Pair
 import qualified PlutusCore.StdLib.Data.ScottList                as Scott
+
+import           PlutusCore.StdLib.Data.Data
+--import  PlutusCore.StdLib.Data.Unit
 
 import           Evaluation.Builtins.Common
 
 import           UntypedPlutusCore.Evaluation.Machine.Cek
 
 import           Control.Exception
+import qualified Data.ByteString                                 as BS
 import           Data.Either
 import           Data.Proxy
 import           Hedgehog                                        hiding (Opaque, Size, Var)
@@ -38,6 +43,7 @@ import qualified Hedgehog.Gen                                    as Gen
 import           Test.Tasty
 import           Test.Tasty.HUnit
 import           Test.Tasty.Hedgehog
+--import qualified Data.ByteString.Char8                          as BSC
 
 defaultCekParametersExt
     :: MachineParameters CekMachineCosts CekValue DefaultUni (Either DefaultFun ExtensionFun)
@@ -67,7 +73,7 @@ test_Const =
         let tC = mkConstant () c
             tB = mkConstant () b
             char = toTypeAst @_ @DefaultUni @Char Proxy
-            runConst con = mkIterApp () (mkIterInst () con [char, bool]) [tC, tB]
+            runConst con1 = mkIterApp () (mkIterInst () con1 [char, bool]) [tC, tB]
             lhs = typecheckReadKnownCek defaultCekParametersExt $ runConst $ builtin () (Right Const)
             rhs = typecheckReadKnownCek defaultCekParametersExt $ runConst $ mapFun Left Plc.const
         lhs === Right (Right c)
@@ -253,11 +259,11 @@ test_IdBuiltinList =
 test_BuiltinPair :: TestTree
 test_BuiltinPair =
     testCase "BuiltinPair" $ do
-        let arg = mkConstant @(Integer, Bool) @DefaultUni () (1, False)
+        let argP = mkConstant @(Integer, Bool) @DefaultUni () (1, False)
             inst efun = mkIterInst () (builtin () efun) [integer, bool]
-            swapped = apply () (inst $ Right Swap) arg
-            fsted   = apply () (inst $ Left FstPair) arg
-            snded   = apply () (inst $ Left SndPair) arg
+            swapped = apply () (inst $ Right Swap) argP
+            fsted   = apply () (inst $ Left FstPair) argP
+            snded   = apply () (inst $ Left SndPair) argP
         -- Swap {integer} {bool} (1, False) ~> (False, 1)
         typecheckEvaluateCekNoEmit defaultCekParametersExt swapped @?=
             Right (EvaluationSuccess $ mkConstant @(Bool, Integer) () (False, 1))
@@ -319,6 +325,179 @@ test_IdBuiltinData =
                 ]
         typecheckEvaluateCekNoEmit defaultCekParametersExt term @?= Right (EvaluationSuccess dTerm)
 
+test_Integer :: TestTree
+test_Integer = testCase "Integer" $ do
+    let args = [con @Integer 1, con @Integer 1]
+    evals @Integer 2 AddInteger args
+    evals @Integer 0 SubtractInteger args
+    evals @Integer 1 MultiplyInteger args
+    evals @Integer 1 DivideInteger args
+    evals @Integer 1 QuotientInteger args
+    evals @Integer 0 RemainderInteger args
+    evals @Integer 0 ModInteger args
+    evals False LessThanInteger args
+    evals True LessThanEqualsInteger args
+    evals False GreaterThanInteger args
+    evals True GreaterThanEqualsInteger args
+    evals True EqualsInteger args
+
+test_String :: TestTree
+test_String = testCase "String" $ do
+    -- maxBoundPlus1 = mkConstant @Integer @DefaultUni () (fromIntegral (maxBound :: Int) + 1)
+    -- takeMaxBoundPlus1 = mkIterApp () (builtin () TakeByteString) [maxBoundPlus1, arg1]
+    -- takeMaxBoundPlus1 `evalsTo` ("" :: BS.ByteString)
+
+    -- bytestrings
+    evals @BS.ByteString "hello world" Concatenate [con @BS.ByteString "hello", con @BS.ByteString " world"]
+    evals @BS.ByteString "mpla" Concatenate [con @BS.ByteString "", con @BS.ByteString "mpla"]
+    evals @BS.ByteString ""  TakeByteString [con @Integer 0 , con @BS.ByteString "mpla"]
+    evals @BS.ByteString "mpla" DropByteString [con @Integer 0 , con @BS.ByteString "mpla"]
+    evals False EqualsByteString [con @BS.ByteString "" , con @BS.ByteString "mpla"]
+    evals True EqualsByteString [con @BS.ByteString "mpla" , con @BS.ByteString "mpla"]
+    evals True LessThanByteString  [con @BS.ByteString "" , con @BS.ByteString "mpla"]
+    evals False GreaterThanByteString [con @BS.ByteString "" , con @BS.ByteString "mpla"]
+
+    -- strings
+    evals @String "a" CharToString [con 'a']
+    evals @String "mpla" Append [con @String "", con @String "mpla"]
+    evals False EqualsString [con @String "" , con @String "mpla"]
+    evals True EqualsString [con @String "mpla" , con @String "mpla"]
+    evals @String "hello world" Append [con @String "hello", con @String " world"]
+
+    -- id for subset char8 of utf8
+    evals @BS.ByteString "hello world" EncodeUtf8 [con @String "hello world"]
+    evals @String "hello world" DecodeUtf8 [con @BS.ByteString "hello world"]
+
+    -- the 'o's replaced with greek o's, so they are kind of "invisible"
+    evals @BS.ByteString "hell\191 w\191rld" EncodeUtf8 [con @String "hellο wοrld"]
+    -- cannot decode back, because bytestring only works on Char8 subset of utf8
+    evals @String "hell\191 w\191rld" DecodeUtf8 [con @BS.ByteString "hell\191 w\191rld"]
+
+
+test_List :: TestTree
+test_List = testCase "List" $ do
+    evalsL False NullList integer [con @[Integer] [1,2]]
+    evalsL False NullList integer [con @[Integer] [1]]
+    evalsL True NullList integer [con @[Integer] []]
+
+    evalsL @Integer 1 HeadList integer [con @[Integer] [1,3]]
+    evalsL @[Integer] [3,4,5] TailList integer [con @[Integer] [1,3,4,5]]
+
+    fails HeadList integer [con @[Integer] []]
+    fails TailList integer [con @[Integer] []]
+
+    evalsL @[Integer] [1] MkCons integer [con @Integer 1, con @[Integer] []]
+    evalsL @[Integer] [1,2] MkCons integer [con @Integer 1, con @[Integer] [2]]
+
+    -- TODO: chooseList
+
+ where
+   evalsL :: Contains DefaultUni a => a -> DefaultFun -> Type TyName DefaultUni () -> [Term TyName Name DefaultUni DefaultFun ()]  -> Assertion
+   evalsL expectedVal b tyArg args =
+    let actualExp = mkIterApp () (tyInst () (builtin () b) tyArg) args
+    in  Right (EvaluationSuccess $ mkConstant () expectedVal)
+        @=?
+        typecheckEvaluateCekNoEmit defaultCekParameters actualExp
+
+   fails :: DefaultFun -> Type TyName DefaultUni () -> [Term TyName Name DefaultUni DefaultFun ()]  -> Assertion
+   fails b tyArg args =
+    let actualExp = mkIterApp () (tyInst () (builtin () b) tyArg) args
+    in  Right EvaluationFailure
+        @=?
+        typecheckEvaluateCekNoEmit defaultCekParameters actualExp
+
+test_Data :: TestTree
+test_Data = testCase "Data" $ do
+    -- construction
+    evals (Constr 2 [I 3]) ConstrData [con @Integer 2, con @[Data] [I 3]]
+    evals (Constr 2 [I 3, B ""]) ConstrData [con @Integer 2, con @[Data] [I 3, B ""]]
+    evals (List []) ListData [con @[Data] []]
+    evals (List [I 3, B ""]) ListData [con @[Data] [I 3, B ""]]
+    evals (Map []) MapData [con @[(Data,Data)] []]
+    evals (Map [(I 3, B "")]) MapData [con @[(Data,Data)] [(I 3, B "")]]
+    evals (B "hello world") BData [con @BS.ByteString "hello world"]
+    evals (I 3) IData [con @Integer 3]
+    evals (B "hello world") BData [con @BS.ByteString "hello world"]
+    evals @[Data] [] MkNilData [con ()]
+    evals @[(Data,Data)] [] MkNilPairData [con ()]
+
+    -- equality
+    evals True EqualsData [con $ B "hello world", con $ B "hello world"]
+    evals True EqualsData [con $ I 4, con $ I 4]
+    evals False EqualsData [con $ B "hello world", con $ I 4]
+    evals True EqualsData [con $ Constr 3 [I 4], con $ Constr 3 [I 4]]
+    evals False EqualsData [con $ Constr 3 [I 3, B ""], con $ Constr 3 [I 3]]
+    evals False EqualsData [con $ Constr 2 [I 4], con $ Constr 3 [I 4]]
+    evals True EqualsData [con $ Map [(I 3, B "")], con $ Map [(I 3, B "")]]
+    evals False EqualsData [con $ Map [(I 3, B "")], con $ Map []]
+    evals False EqualsData [con $ Map [(I 3, B "")], con $ Map [(I 3, B ""), (I 4, I 4)]]
+
+    -- destruction
+    evals @Integer 3 UnIData [con $ I 3]
+    evals @BS.ByteString "hello world" UnBData [con $ B "hello world"]
+    evals @Integer 3 UnIData [con $ I 3]
+    evals @(Integer, [Data]) (1, []) UnConstrData [con $ Constr 1 []]
+    evals @(Integer, [Data]) (1, [I 3]) UnConstrData [con $ Constr 1 [I 3]]
+    evals @[(Data, Data)] [] UnMapData [con $ Map []]
+    evals @[(Data, Data)] [(B "", I 3)] UnMapData [con $ Map [(B "", I 3)]]
+    evals @[Data] [] UnListData [con $ List []]
+    evals @[Data] [I 3, I 4, B ""] UnListData [con $ List [I 3, I 4, B ""]]
+
+
+    let actualExp = mkIterApp ()
+                      (tyInst () (apply () caseData $ con $ I 3) bool)
+                      [ -- constr
+                        runQuote $ do
+                              a1 <- freshName "a1"
+                              a2 <- freshName "a2"
+                              pure $ lamAbs () a1 integer $ lamAbs () a2 (TyApp () Builtin.list dataTy) false
+                        -- map
+                      , runQuote $ do
+                              a1 <- freshName "a1"
+                              pure $ lamAbs () a1 (TyApp () Builtin.list $ mkIterTyApp () pair [dataTy,dataTy]) false
+                       -- list
+                      , runQuote $ do
+                              a1 <- freshName "a1"
+                              pure $ lamAbs () a1 (TyApp () Builtin.list dataTy) false
+                       -- I
+                      , runQuote $ do
+                              a1 <- freshName "a1"
+                              pure $ lamAbs () a1 integer true
+                        -- B
+                      , runQuote $ do
+                              a1 <- freshName "a1"
+                              pure $ lamAbs () a1 (mkTyBuiltin @_ @BS.ByteString ()) false
+                      ]
+
+    Right (EvaluationSuccess true)  @=?  typecheckEvaluateCekNoEmit defaultCekParameters actualExp
+
+-- TODO: test_Crypto: verifysignature,sha2,sha3,blake,ceckakk,
+
+test_Other :: TestTree
+test_Other = testCase "Unit" $ do
+    -- Right (EvaluationSuccess $ mkConstant () False)  @=?  typecheckEvaluateCekNoEmit defaultCekParameters actualExp
+
+    pure ()
+    -- let expr = (mkIterApp () (tyInst () (builtin () ChooseUnit) $ TyFun () unit unit) [mkConstant () () , mkConstant () ()]) :: TermLike term TyName Name DefaultUni DefaultFun => term ()
+
+    -- Right (EvaluationSuccess $ con ()) @=? typecheckEvaluateCekNoEmit defaultCekParameters expr
+
+    -- TODO:
+    -- chooseunit
+    -- ifthenelse
+    -- trace
+
+con :: Contains DefaultUni a => a -> Term TyName Name DefaultUni DefaultFun ()
+con = mkConstant ()
+
+evals :: Contains DefaultUni a => a -> DefaultFun -> [Term TyName Name DefaultUni DefaultFun ()]  -> Assertion
+evals expectedVal b args =
+    let actualExp = mkIterApp () (builtin () b) args
+    in  Right (EvaluationSuccess $ mkConstant () expectedVal)
+        @=?
+        typecheckEvaluateCekNoEmit defaultCekParameters actualExp
+
+
 test_definition :: TestTree
 test_definition =
     testGroup "definition"
@@ -337,4 +516,9 @@ test_definition =
         , test_BuiltinPair
         , test_SwapEls
         , test_IdBuiltinData
+        , test_Integer
+        , test_String
+        , test_List
+        , test_Data
+        , test_Other
         ]
