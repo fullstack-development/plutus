@@ -23,6 +23,7 @@ import           Cardano.BM.Data.Trace               (Trace)
 import           Cardano.BM.Setup                    (setupTrace_)
 import qualified Cardano.ChainIndex.Types            as ChainIndex.Types
 import qualified Cardano.Metadata.Types              as Metadata.Types
+import           Cardano.Node.Types                  (NodeMode (..))
 import qualified Cardano.Node.Types                  as Node.Types
 import qualified Cardano.Wallet.Client               as Wallet.Client
 import           Cardano.Wallet.Types                (WalletInfo (..))
@@ -54,11 +55,11 @@ import qualified Plutus.PAB.Monitoring.Monitoring    as LM
 import           Plutus.PAB.Monitoring.PABLogMsg     (AppMsg (..))
 import           Plutus.PAB.Monitoring.Util          (PrettyObject (..), convertLog)
 import           Plutus.PAB.Run.Cli                  (ConfigCommandArgs (..), runConfigCommand)
-import           Plutus.PAB.Run.Command              (ConfigCommand (..), MockServerMode (..))
+import           Plutus.PAB.Run.Command              (ConfigCommand (..))
 import           Plutus.PAB.Run.PSGenerator          (HasPSTypes (..))
 import           Plutus.PAB.Types                    (Config (..))
 import qualified Plutus.PAB.Types                    as PAB.Types
-import           Plutus.PAB.Webserver.API            (NewAPI)
+import           Plutus.PAB.Webserver.API            (API)
 import           Plutus.PAB.Webserver.Types          (ContractActivationArgs (..))
 import           Prettyprinter                       (Pretty)
 import           Servant                             ((:<|>) (..))
@@ -143,7 +144,7 @@ startPab pabConfig = do
 
   -- Spin up the servers
   let cmd = ForkCommands
-              [ MockNode WithMockServer
+              [ StartMockNode
               , ChainIndex
               , Metadata
               , MockWallet
@@ -184,7 +185,7 @@ startPingPongContract pabConfig = do
                 , caWallet = Wallet 1
                 }
 
-  let (activateContract :<|> instance' :<|> _) = client (Proxy @(NewAPI TestingContracts Integer))
+  let _ :<|> _ :<|> activateContract :<|> instance' :<|> _ = client (Proxy @(API TestingContracts Integer))
 
   eci <- runClientM (activateContract ca) apiClientEnv
 
@@ -204,8 +205,8 @@ runPabInstanceEndpoints :: Config -> ContractInstanceId -> [EndpointCall] -> IO 
 runPabInstanceEndpoints pabConfig instanceId endpoints = do
   apiClientEnv <- getClientEnv pabConfig
 
-  let activateContract :<|> instance' :<|> _ = client (Proxy @(NewAPI TestingContracts Integer))
-  let status' :<|> endpoint :<|> stop' = instance' . Text.pack . show . unContractInstanceId $ instanceId
+  let _ :<|> _ :<|> activateContract :<|> instance' :<|> _ = client (Proxy @(API TestingContracts Integer))
+  let _ :<|> _ :<|> endpoint :<|> _ = instance' . Text.pack . show . unContractInstanceId $ instanceId
 
   forM_ endpoints $ \e -> do
     x <- runClientM (endpoint (ep e) (toJSON ())) apiClientEnv

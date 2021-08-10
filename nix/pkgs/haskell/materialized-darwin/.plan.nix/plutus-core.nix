@@ -61,6 +61,7 @@
           (hsPkgs."deriving-compat" or (errorHandler.buildDepError "deriving-compat"))
           (hsPkgs."dlist" or (errorHandler.buildDepError "dlist"))
           (hsPkgs."exceptions" or (errorHandler.buildDepError "exceptions"))
+          (hsPkgs."extra" or (errorHandler.buildDepError "extra"))
           (hsPkgs."filepath" or (errorHandler.buildDepError "filepath"))
           (hsPkgs."flat" or (errorHandler.buildDepError "flat"))
           (hsPkgs."ghc-prim" or (errorHandler.buildDepError "ghc-prim"))
@@ -256,6 +257,7 @@
           "PlutusIR"
           "PlutusIR/Core"
           "PlutusIR/Core/Instance"
+          "PlutusIR/Core/Instance/Flat"
           "PlutusIR/Core/Instance/Pretty"
           "PlutusIR/Core/Instance/Scoping"
           "PlutusIR/Core/Plated"
@@ -361,6 +363,20 @@
           modules = [ "Common" "Parsers" ];
           hsSourceDirs = [ "executables" ];
           mainPath = [ "uplc/Main.hs" ];
+          };
+        "pir" = {
+          depends = [
+            (hsPkgs."plutus-core" or (errorHandler.buildDepError "plutus-core"))
+            (hsPkgs."base" or (errorHandler.buildDepError "base"))
+            (hsPkgs."bytestring" or (errorHandler.buildDepError "bytestring"))
+            (hsPkgs."flat" or (errorHandler.buildDepError "flat"))
+            (hsPkgs."lens" or (errorHandler.buildDepError "lens"))
+            (hsPkgs."optparse-applicative" or (errorHandler.buildDepError "optparse-applicative"))
+            (hsPkgs."transformers" or (errorHandler.buildDepError "transformers"))
+            ];
+          buildable = true;
+          hsSourceDirs = [ "executables" ];
+          mainPath = [ "pir/Main.hs" ];
           };
         };
       tests = {
