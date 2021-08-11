@@ -57,6 +57,10 @@ let
       "https://github.com/input-output-hk/hedgehog-extras"."8bcd3c9dc22cc44f9fcfe161f4638a384fc7a187" = "12viwpahjdfvlqpnzdgjp40nw31rvyznnab1hml9afpaxd6ixh70";
     };
     cabalProjectLocal = lib.optionalString pkgs.stdenv.hostPlatform.isWindows ''
+      -- When cross compiling we don't have a `ghc` package
+      package plutus-tx-plugin
+        flags: +use-ghc-stub
+
       -- The following is needed because Nix is doing something crazy.
       package byron-spec-ledger
         tests: False
