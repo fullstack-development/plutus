@@ -191,6 +191,7 @@
           "Plutus/PAB/Timeout"
           "Plutus/PAB/Types"
           "Plutus/PAB/Webserver/API"
+          "Plutus/PAB/Webserver/Client"
           "Plutus/PAB/Webserver/Handler"
           "Plutus/PAB/Webserver/Server"
           "Plutus/PAB/Webserver/Types"
@@ -261,10 +262,10 @@
             ];
           buildable = true;
           modules = [
-            "ContractExample"
             "ContractExample/AtomicSwap"
             "ContractExample/PayToWallet"
             "ContractExample/WaitForTx"
+            "ContractExample"
             ];
           hsSourceDirs = [ "examples" ];
           mainPath = [ "Main.hs" ];

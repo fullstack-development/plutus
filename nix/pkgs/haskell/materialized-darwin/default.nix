@@ -858,7 +858,9 @@
           "lobemo-backend-monitoring" = { flags = {}; };
           "marlowe-dashboard-server" = { flags = {}; };
           "tracer-transformers" = { flags = {}; };
-          "plutus-tx-plugin" = { flags = {}; };
+          "plutus-tx-plugin" = {
+            flags = { "use-ghc-stub" = lib.mkOverride 900 false; };
+            };
           "marlowe-symbolic" = { flags = {}; };
           "plutus-metatheory" = { flags = {}; };
           "marlowe-playground-server" = { flags = {}; };

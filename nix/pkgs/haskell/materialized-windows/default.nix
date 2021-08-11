@@ -845,7 +845,9 @@
           "lobemo-backend-monitoring" = { flags = {}; };
           "marlowe-dashboard-server" = { flags = {}; };
           "tracer-transformers" = { flags = {}; };
-          "plutus-tx-plugin" = { flags = {}; };
+          "plutus-tx-plugin" = {
+            flags = { "use-ghc-stub" = lib.mkOverride 900 true; };
+            };
           "marlowe-symbolic" = { flags = {}; };
           "plutus-metatheory" = { flags = {}; };
           "marlowe-playground-server" = { flags = {}; };
@@ -1310,6 +1312,7 @@
           "cardano-crypto-wrapper".components.library.planned = lib.mkOverride 900 true;
           "ansi-terminal".components.library.planned = lib.mkOverride 900 true;
           "typed-protocols".components.library.planned = lib.mkOverride 900 true;
+          "plutus-core".components.exes."pir".planned = lib.mkOverride 900 true;
           "Stream".components.library.planned = lib.mkOverride 900 true;
           "wai-websockets".components.library.planned = lib.mkOverride 900 true;
           "cardano-api".components.sublibs."gen".planned = lib.mkOverride 900 true;

@@ -8,7 +8,7 @@
   , config
   , ... }:
   {
-    flags = {};
+    flags = { use-ghc-stub = false; };
     package = {
       specVersion = "2.2";
       identifier = { name = "plutus-tx-plugin"; version = "0.1.0.0"; };
@@ -47,7 +47,7 @@
           (hsPkgs."text" or (errorHandler.buildDepError "text"))
           (hsPkgs."transformers" or (errorHandler.buildDepError "transformers"))
           (hsPkgs."plutus-tx" or (errorHandler.buildDepError "plutus-tx"))
-          ] ++ (if system.isWindows
+          ] ++ (if flags.use-ghc-stub
           then [
             (hsPkgs."plutus-ghc-stub" or (errorHandler.buildDepError "plutus-ghc-stub"))
             ]
@@ -92,7 +92,7 @@
             (hsPkgs."lens" or (errorHandler.buildDepError "lens"))
             (hsPkgs."ghc-prim" or (errorHandler.buildDepError "ghc-prim"))
             ];
-          buildable = if system.isWindows then false else true;
+          buildable = if flags.use-ghc-stub then false else true;
           modules = [
             "IsData/Spec"
             "Lift/Spec"
