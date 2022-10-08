@@ -479,7 +479,7 @@ test-suite test3
     mtl -any,
     plutus-metatheory,
     plutus-core,
-    plutus-core:plutus-core-testlib,
+    plutus-core-testlib,
     size-based -any,
     Stream -any,
     tasty -any,

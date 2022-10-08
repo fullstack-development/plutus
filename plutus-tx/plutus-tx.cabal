@@ -109,26 +109,6 @@ library
     , th-compat
     , transformers
 
-library plutus-tx-testlib
-  import:          lang
-  visibility:      public
-  hs-source-dirs:  testlib
-  exposed-modules: PlutusTx.Test
-  build-depends:
-    , base           >=4.9 && <5
-    , filepath
-    , flat
-    , ghc-prim
-    , lens
-    , mtl
-    , plutus-core
-    , plutus-tx
-    , plutus-core:plutus-core-testlib ^>=1.0
-    , prettyprinter
-    , tagged
-    , tasty
-    , text
-
 test-suite plutus-tx-test
   import:             lang
 

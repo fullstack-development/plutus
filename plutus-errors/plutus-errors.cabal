@@ -44,7 +44,7 @@ library
   build-depends:
       base >=4.7 && <5,
       template-haskell >= 2.16,
-      th-abstraction < 0.4,
+      th-abstraction,
       containers >= 0.6,
       prettyprinter >=1.1.0.1,
       plutus-core -any,
@@ -70,7 +70,7 @@ executable plutus-errors-bootstrap
   build-depends:
       base >=4.7 && <5,
       template-haskell >= 2.16,
-      th-abstraction < 0.4,
+      th-abstraction,
       containers >= 0.6,
       plutus-core,
       plutus-errors

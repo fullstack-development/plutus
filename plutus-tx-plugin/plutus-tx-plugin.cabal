@@ -114,9 +114,9 @@ test-suite plutus-tx-tests
         deepseq -any,
         integer-gmp -any,
         plutus-core ^>=1.0,
-        plutus-core:plutus-core-testlib -any,
+        plutus-core-testlib -any,
         plutus-tx ^>=1.0,
-        plutus-tx:plutus-tx-testlib -any,
+        plutus-tx-testlib -any,
         plutus-tx-plugin ^>=1.0,
         prettyprinter -any,
         mtl -any,
@@ -141,7 +141,7 @@ test-suite size
     hs-source-dirs: test/size
     build-depends:
         base >= 4.9 && < 5.0,
-        plutus-tx:plutus-tx-testlib -any,
+        plutus-tx-testlib -any,
         plutus-tx ^>=1.0,
         plutus-tx-plugin ^>=1.0,
         tagged -any,

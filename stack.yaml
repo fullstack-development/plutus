@@ -1,94 +1,181 @@
-resolver: lts-18.24
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/19/24.yaml
+
+compiler: ghc-8.10.7
 
 packages:
+- index-envs
 - plutus-benchmark
 - plutus-core
+- plutus-core-testlib
 - plutus-errors
 - plutus-ledger-api
-- plutus-metatheory
 - plutus-tx
+- plutus-tx-testlib
 - plutus-tx-plugin
 - prettyprinter-configurable
 - word-array
 - stubs/plutus-ghc-stub
 
 extra-deps:
-# Flat compression
-- pure-zlib-0.6.7@sha256:5a1cdf87bf3079b7d3abace1f94eeb3c597c687a38a08ee2908783e609271467,3487
-# FEAT/NEAT and deps
-- lazy-search-0.1.2.0
-- size-based-0.1.2.0
-- testing-feat-1.1.0.0
-- Stream-0.4.7.2@sha256:ed78165aa34c4e23dc53c9072f8715d414a585037f2145ea0eb2b38300354c53,1009
-- lazysmallcheck-0.6@sha256:dac7a1e4877681f1260309e863e896674dd6efc1159897b7945893e693f2a6bc,1696
-# Other missing packages
-- composition-prelude-3.0.0.2
-- constraints-extras-0.3.0.2
-- dependent-map-0.4.0.0
-- dependent-sum-0.7.1.0
-- dependent-sum-template-0.1.0.3
-- barbies-2.0.2.0
-- nothunks-0.1.2
-- indexed-traversable-instances-0.1
-- base16-bytestring-1.0.1.0
-# A revision was added to keep the bounds down, we don't actually want this!
-# we work around the newer persistent-template by adding flags below
-- monoidal-containers-0.6.0.1
-- recursion-schemes-5.1.3
-- row-types-0.4.0.0
-- time-out-0.2@sha256:b9a6b4dee64f030ecb2a25dca0faff39b3cb3b5fefbb8af3cdec4142bfd291f2
-- time-interval-0.1.1@sha256:7bfd3601853d1af7caa18248ec10b01701d035ac274a93bb4670fea52a14d4e8
-- time-units-1.0.0@sha256:27cf54091c4a0ca73d504fc11d5c31ab4041d17404fe3499945e2055697746c1
-- servant-websockets-2.0.0
-- servant-subscriber-0.7.0.0
-- safe-exceptions-checked-0.1.0
-- async-timer-0.1.4.1
-- sbv-8.9
-- wl-pprint-1.2.1@sha256:aea676cff4a062d7d912149d270e33f5bb0c01b68a9db46ff13b438141ff4b7c
-- witherable-0.4.1
-- canonical-json-0.6.0.0@sha256:9021f435ccb884a3b4c55bcc6b50eb19d5fc3cc3f29d5fcbdef016f5bbae23a2,3488
-- statistics-linreg-0.3@sha256:95c6efe6c7f6b26bc6e9ada90ab2d18216371cf59a6ef2b517b4a6fd35d9a76f,2544
-- partial-order-0.2.0.0@sha256:a0d6ddc9ebcfa965a5cbcff1d06d46a79d44ea5a0335c583c2a51bcb41334487,2275
-- streaming-binary-0.2.2.0@sha256:09b9a9b0291199c5808e88dcf9c93e7b336e740c71efeafd7c835b59794a8c90,1034
-- transformers-except-0.1.1@sha256:6c12ef8e632a10440968cd541e75074bd6ef4b5ff4012677f8f8189d7b2d0df6,1387
-- beam-core-0.9.0.0@sha256:e5b1cb4d5b8a8a166f3373e8718672a3884feb9a5a133404b047b0af76538023,5282
-- beam-migrate-0.5.0.0@sha256:d3f7e333ec9e96122ccec6be0d38a88f766dfc248323be73fd0b3cee245ea421,4923
-- beam-sqlite-0.5.0.0@sha256:d785bf40101235a72b80652ce27be9c8048de5f7c171ccb23e1e62b8f1ce6e7c,3496
-- Unique-0.4.7.8
-- moo-1.2
-- gray-code-0.3.1
-- dom-lt-0.2.2.1@sha256:6b005b64f10a0f73f716898e0f4b4d93a02c31dc8abb155c14afd870e3abf9ac,1778
-- libsystemd-journal-1.4.5@sha256:dc68296f5d874b48ba187dbd0af4de8182ba57cb6ebaa46c05ac61c1b3c6c396,1238
-- hedgehog-1.1.1
+- git: https://github.com/input-output-hk/cardano-crypto
+  commit: ce8f1934e4b6252084710975bd9bbc0a4648ece4
 
-# cabal.project is the source of truth for these pins, they are explained there
-# and need to be kept in sync.
-- git: https://github.com/michaelpj/flat.git
-  commit: ee59880f47ab835dbd73bea0847dab7869fc20d8
-- git: https://github.com/input-output-hk/cardano-crypto.git
-  commit: 07397f0e50da97eaa0575d93bee7ac4b2b2576ec
-- git: https://github.com/input-output-hk/cardano-prelude
-  commit: fd773f7a58412131512b9f694ab95653ac430852
+- git: https://github.com/input-output-hk/cardano-node
+  commit: 950c4e222086fed5ca53564e642434ce9307b0b9 # 1.35.3
   subdirs:
-    - cardano-prelude
-    - cardano-prelude-test
+  - cardano-api
+
+- git: https://github.com/input-output-hk/cardano-ledger
+  commit: c7c63dabdb215ebdaed8b63274965966f2bf408f
+  subdirs:
+  - eras/alonzo/impl
+  - eras/alonzo/test-suite
+  - eras/babbage/impl
+  - eras/babbage/test-suite
+  - eras/byron/chain/executable-spec
+  - eras/byron/crypto
+  - eras/byron/crypto/test
+  - eras/byron/ledger/executable-spec
+  - eras/byron/ledger/impl
+  - eras/byron/ledger/impl/test
+  - eras/shelley/impl
+  - eras/shelley/test-suite
+  - eras/shelley-ma/impl
+  - eras/shelley-ma/test-suite
+  - libs/cardano-ledger-core
+  - libs/cardano-ledger-pretty
+  - libs/cardano-protocol-tpraos
+  - libs/cardano-data
+  - libs/vector-map
+  - libs/set-algebra
+  - libs/small-steps
+  - libs/small-steps-test
+  - libs/non-integral
+
 - git: https://github.com/input-output-hk/cardano-base
-  commit: 0b1b5b37e305c4bb10791f843bc8c81686a0cba4
+  commit: 0f3a867493059e650cda69e20a5cbf1ace289a57
   subdirs:
-    - base-deriving-via
-    - binary
-    - binary/test
-    - cardano-crypto-class
-    - cardano-crypto-praos
-    - cardano-crypto-tests
-    - measures
-    - orphans-deriving-via
-    - slotting
-    - strict-containers
+  - base-deriving-via
+  - binary
+  - binary/test
+  - cardano-crypto-class
+  - cardano-crypto-praos
+  - cardano-crypto-tests
+  - measures
+  - orphans-deriving-via
+  - slotting
+  - strict-containers
 
-allow-newer: true
+- git: https://github.com/input-output-hk/cardano-prelude
+  commit: bb4ed71ba8e587f672d06edf9d2e376f4b055555
+  subdirs:
+  - cardano-prelude
+  - cardano-prelude-test
 
-extra-package-dbs: []
+- git: https://github.com/input-output-hk/iohk-monitoring-framework
+  commit: 066f7002aac5a0efc20e49643fea45454f226caa
+  subdirs:
+  - contra-tracer
+  - iohk-monitoring
+  - plugins/backend-aggregation
+  - plugins/backend-ekg
+  - plugins/backend-monitoring
+  - plugins/backend-trace-forwarder
+  - plugins/scribe-systemd
+  - tracer-transformers
 
-nix:
-  shell-file: shell.nix
+- git: https://github.com/input-output-hk/ouroboros-network
+  commit: cb9eba406ceb2df338d8384b35c8addfe2067201
+  subdirs:
+  - monoidal-synchronisation
+  - network-mux
+  - ouroboros-consensus
+  - ouroboros-consensus-byron
+  - ouroboros-consensus-cardano
+  - ouroboros-consensus-protocol
+  - ouroboros-consensus-shelley
+  - ouroboros-network
+  - ouroboros-network-framework
+  - ouroboros-network-testing
+
+- git: https://github.com/input-output-hk/goblins
+  commit: cde90a2b27f79187ca8310b6549331e59595e7ba
+
+- git: https://github.com/input-output-hk/typed-protocols
+  commit: 181601bc3d9e9d21a671ce01e0b481348b3ca104
+  subdirs:
+  - typed-protocols
+  - typed-protocols-cborg
+  - typed-protocols-examples
+
+- git: https://github.com/input-output-hk/optparse-applicative
+  commit: 7497a29cb998721a9068d5725d49461f2bba0e7a
+
+- git: https://github.com/input-output-hk/Win32-network
+  commit: 3825d3abf75f83f406c1f7161883c438dac7277d
+
+- git: https://github.com/vshabanov/ekg-json
+  commit: 00ebe7211c981686e65730b7144fbf5350462608
+
+- git: https://github.com/input-output-hk/hedgehog-extras
+  commit: 714ee03a5a786a05fc57ac5d2f1c2edce4660d85
+
+- git: https://github.com/haskell-works/hw-aeson
+  commit: 6dc309ff4260c71d9a18c220cbae8aa1dfe2a02e
+
+- git: https://github.com/input-output-hk/io-sim
+  commit: f4183f274d88d0ad15817c7052df3a6a8b40e6dc
+  subdirs:
+  - io-classes
+  - io-sim
+  - strict-stm
+
+- git: https://github.com/input-output-hk/ekg-forward
+  commit: 297cd9db5074339a2fb2e5ae7d0780debb670c63
+
+- git: https://github.com/denisshevchenko/threepenny-gui
+  commit: 4ec92ded05ccf59ba4a874be4b404ac1b6d666b6
+
+- git: https://github.com/input-output-hk/flat
+  commit: ee59880f47ab835dbd73bea0847dab7869fc20d8
+
+- git:  https://github.com/co-log/co-log
+  commit: 65b89152d0ae61ac99a56fbe645ed28cfacd717e
+
+- Unique-0.4.7.9@sha256:a7e154cf6d05169777a1e54aadab24fb3a6eae3ee167e5e77d7ba96d182436c7,2064
+- bin-0.1@sha256:d0ab4d2b00abe1d6312186a100c658248ec67c1bb2573057aa797b6d4c89bffe,2058
+- blockfrost-api-0.6.0.0@sha256:4d7c8fa02d7953c2af0f6ea0a7222dab8efd2987e0ed491296605cbb6a6f64b3,6791
+- blockfrost-client-0.6.0.0@sha256:f10d3513c3eafba3c031f71e87a438baf53298bd2c9c2429a2911f81bf81e2e2,3623
+- blockfrost-client-core-0.6.0.0@sha256:32d325cf36fcff6cb4a08c41eee176588c20ab0ba8d5884fb0727fa66603600e,2093
+- bytebuild-0.3.11.0@sha256:8e854ddd35eb17e10dc3801bbe409b2d23434cc0d58c687060c619920dacfdae,3338
+- byteslice-0.2.7.0@sha256:b5aa80e6efa143b532d20603fb643767386771ec059adedd87cf72cceaf96420,2403
+- bytesmith-0.3.9.0@sha256:20a2ec7e89d74506c73c0e5e8829cd3ca8ad20b8b88d5de475c02b21fd21c253,1956
+- canonical-json-0.6.0.1@sha256:170572eba56e30883a8e8535b968a2a46e9eb213885d7d6fa1f551983a15a23a,3404
+- chronos-1.1.4@sha256:c51e9c5afce7bb26c01aba10e42f5a29ccafa4a8d6fd9264d68f16419e05ac47,3811
+- co-log-core-0.3.1.0@sha256:9794bdedd1391decd0e22bdfe2b11abcb42e6cff7a4531e1f8882890828f4e63,3816
+- composition-prelude-3.0.0.2@sha256:1ffed216bd28d810fce0b5be83a661e2a892696d73b3f8de5c0f5edb9b5f0090,1216
+- contiguous-0.6.2.0@sha256:34adb3e50fd7de105b8572562dda48c67bc5096dbd3eec0abb4ceeaf7383c4e5,1871
+- cryptonite-0.27@sha256:c3a9c8ce11e654a9d5bee827b089d4b50587272828d0c52a85362a58667a916c,18163
+- dns-3.0.4@sha256:b9c99f4268c9a8df0060cc33c62442fefeed03f3f5ce5387b884a7906a764a96,3335
+- dom-lt-0.2.3@sha256:89f17bbeb0d23f5a46fe7099b81cc9b4b5df32aadb5080fc171c874aafc802c0,1850
+- fin-0.1.1@sha256:dfe9221b0c3982c9b1786716b0660741566564de28b53f550b28b24bc83484f4,3570
+- formatting-6.3.7@sha256:610199e835d93eb5902d88cf684fd938a94eda6e075353b6f8558d5ecb396855,1806
+- gray-code-0.3.1@sha256:2c8a4ed9c9ee37320305610604d6d93504e0813d7c9768949af418b53043185a,2388
+- hedgehog-1.1.2@sha256:7378b26898f39ec436da93a95112db271384a2fe517bf8323c4e5893ea461b78,4475
+- lazy-search-0.1.3.0@sha256:7585b6cac1bf24ece7dea2273b7cd48b01f87314b39c2abb356e7cfb6ac2af90,1239
+- moo-1.2@sha256:0c4be1a01548db785dcbbe6b8c98579dbf03c5b3b536e0420dce3ba6a61337cb,5951
+- nothunks-0.1.3@sha256:33bb3af223163535fa59d1fa83ba95a355106ba3fcffe5452d4abbf13ab4608d,2521
+- protolude-0.3.0@sha256:8361b811b420585b122a7ba715aa5923834db6e8c36309bf267df2dbf66b95ef,2693
+- ral-0.1@sha256:846216dc676f8857236de6588d136eeda33f6f49f40a8d1c31d73f59d9f77928,3264
+- run-st-0.1.1.0@sha256:a43245bb23984089016772481bf52bfe63eaff0c5040303f69c9b15e80872fdc,883
+- singleton-bool-0.1.5@sha256:fd382a01e1636744d31e796ef0cf230eb8729cc399ffbe561a3ec74efcfd3087,1234
+- size-based-0.1.3.1@sha256:b6abfa5639cce41666a4aaa0aeb964042187a01ffff8451b5efe9f7561f54962,1253
+- some-1.0.2@sha256:3d460998df32ad7b93bf55657aeae988d97070155e71718b4bc75d0997ce9d62,2244
+- statistics-linreg-0.3@sha256:95c6efe6c7f6b26bc6e9ada90ab2d18216371cf59a6ef2b517b4a6fd35d9a76f,2544
+- streaming-binary-0.2.2.0@sha256:09b9a9b0291199c5808e88dcf9c93e7b336e740c71efeafd7c835b59794a8c90,1034
+- tasty-hedgehog-1.3.1.0@sha256:2d1eb93387a06a29a0da1b92611799fe986d718fb952ead48c959f590b8b2ec1,1803
+- transformers-except-0.1.2@sha256:2ff895fd65ec9e45cbe839ef5b66e26b7d9f3fe561148993293a41e14491e625,1548
+- typerep-map-0.5.0.0@sha256:34f1ba9b268a6d52e26ae460011a5571e8099b50a3f4a7c8db25dd8efe3be8ee,4667
+- validation-selective-0.1.0.2@sha256:c878846bfffeba69efa3b4866025f249656e0e0a129fed6d446eb602382d328b,3856
+- zigzag-0.0.1.0@sha256:ac2f78aa02457ac12d17621c692d29ad30bae205b5be858fbf0e400ac9a9c412,1133
